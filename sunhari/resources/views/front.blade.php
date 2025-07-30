@@ -1,3 +1,5 @@
-@include('include/header')
+@include('Include/Header')
+
 @include($view)
-@include('include/footer')
+
+@include('Include/Footer')
