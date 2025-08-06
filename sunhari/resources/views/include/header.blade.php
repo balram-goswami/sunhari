@@ -18,9 +18,9 @@ $headerOption = getThemeOptions('header');
 </head>
 
 <body class="template-index belle template-index-belle">
-    <div id="pre-loader">
+    <!-- <div id="pre-loader">
         <img src="themeAssets/images/loader.gif" alt="Loading..." />
-    </div>
+    </div> -->
     <div class="pageWrapper">
         <!--Search Form Drawer-->
         <div class="search">

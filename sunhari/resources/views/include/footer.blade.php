@@ -158,7 +158,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="product-details-img">
                                     <div class="pl-20">
-                                        <img src="themeAssets/images/product-detail-page/camelia-reversible-big1.jpg"
+                                        <img src="{ publicPath('themeAssets/images/product-detail-page/camelia-reversible-big1.jpg') }}"
                                             alt="" />
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@
                                                     <input class="swatchInput" id="swatch-0-red" type="radio"
                                                         name="option-0" value="Red">
                                                     <label class="swatchLbl color medium rectangle" for="swatch-0-red"
-                                                        style="background-image:url(themeAssets/images/product-detail-page/variant1-1.jpg);"
+                                                        style="background-image:url({ publicPath('themeAssets/images/product-detail-page/variant1-1.jpg') }});"
                                                         title="Red"></label>
                                                 </div>
                                                 <div data-value="Blue" class="swatch-element color blue available">
@@ -208,7 +208,7 @@
                                                         name="option-0" value="Blue">
                                                     <label class="swatchLbl color medium rectangle"
                                                         for="swatch-0-blue"
-                                                        style="background-image:url(themeAssets/images/product-detail-page/variant1-2.jpg);"
+                                                        style="background-image:url({ publicPath('themeAssets/images/product-detail-page/variant1-2.jpg') }});"
                                                         title="Blue"></label>
                                                 </div>
                                                 <div data-value="Green" class="swatch-element color green available">
@@ -216,7 +216,7 @@
                                                         name="option-0" value="Green">
                                                     <label class="swatchLbl color medium rectangle"
                                                         for="swatch-0-green"
-                                                        style="background-image:url(themeAssets/images/product-detail-page/variant1-3.jpg);"
+                                                        style="background-image:url({ publicPath('themeAssets/images/product-detail-page/variant1-3.jpg') }});"
                                                         title="Green"></label>
                                                 </div>
                                                 <div data-value="Gray" class="swatch-element color gray available">
@@ -224,7 +224,7 @@
                                                         name="option-0" value="Gray">
                                                     <label class="swatchLbl color medium rectangle"
                                                         for="swatch-0-gray"
-                                                        style="background-image:url(themeAssets/images/product-detail-page/variant1-4.jpg);"
+                                                        style="background-image:url({ publicPath('themeAssets/images/product-detail-page/variant1-4.jpg') }});"
                                                         title="Gray"></label>
                                                 </div>
                                             </div>
@@ -309,7 +309,7 @@
         <a class="btn closepopup"><i class="icon icon anm anm-times-l"></i></a>
         <!-- Modal content-->
         <div class="display-table splash-bg">
-            <div class="display-table-cell width40"><img src="themeAssets/images/newsletter-img.jpg"
+            <div class="display-table-cell width40"><img src="{ publicPath('themeAssets/images/newsletter-img.jpg') }}"
                     alt="Join Our Mailing List" title="Join Our Mailing List" /> </div>
             <div class="display-table-cell width60 text-center">
                 <div class="newsletter-left">
@@ -348,56 +348,7 @@
 </div>
 <!-- End Newsletter Popup -->
 
-<!-- Including Jquery -->
-<script src="themeAssets/js/vendor/jquery-3.3.1.min.js"></script>
-<script src="themeAssets/js/vendor/modernizr-3.6.0.min.js"></script>
-<script src="themeAssets/js/vendor/jquery.cookie.js"></script>
-<script src="themeAssets/js/vendor/wow.min.js"></script>
-<!-- Including Javascript -->
-<script src="themeAssets/js/bootstrap.min.js"></script>
-<script src="themeAssets/js/plugins.js"></script>
-<script src="themeAssets/js/popper.min.js"></script>
-<script src="themeAssets/js/lazysizes.js"></script>
-<script src="themeAssets/js/main.js"></script>
-<!--For Newsletter Popup-->
-<script>
-    jQuery(document).ready(function() {
-        jQuery('.closepopup').on('click', function() {
-            jQuery('#popup-container').fadeOut();
-            jQuery('#modalOverly').fadeOut();
-        });
-
-        var visits = jQuery.cookie('visits') || 0;
-        visits++;
-        jQuery.cookie('visits', visits, {
-            expires: 1,
-            path: '/'
-        });
-        console.debug(jQuery.cookie('visits'));
-        if (jQuery.cookie('visits') > 1) {
-            jQuery('#modalOverly').hide();
-            jQuery('#popup-container').hide();
-        } else {
-            var pageHeight = jQuery(document).height();
-            jQuery('<div id="modalOverly"></div>').insertBefore('body');
-            jQuery('#modalOverly').css("height", pageHeight);
-            jQuery('#popup-container').show();
-        }
-        if (jQuery.cookie('noShowWelcome')) {
-            jQuery('#popup-container').hide();
-            jQuery('#active-popup').hide();
-        }
-    });
-
-    jQuery(document).mouseup(function(e) {
-        var container = jQuery('#popup-container');
-        if (!container.is(e.target) && container.has(e.target).length === 0) {
-            container.fadeOut();
-            jQuery('#modalOverly').fadeIn(200);
-            jQuery('#modalOverly').hide();
-        }
-    });
-</script>
+@include('Include.Script')
 </div>
 </body>
 

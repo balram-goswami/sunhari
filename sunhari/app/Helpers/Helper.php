@@ -701,27 +701,6 @@ function getMenus()
 			]
 		],
 
-		// Astrologer
-		[
-			'title' => 'Dashboard',
-			'route' => 'astrologer.index',
-			'icon' => 'tf-icons bx bx-home-circle',
-			'role' => [User::ASTROLOGER],
-		],
-		[
-			'title' => 'My Media',
-			'route' => 'media.index',
-			'icon' => 'menu-icon tf-icons bx bxs-file-image',
-			'role' => [User::ASTROLOGER],
-		],
-		[
-			'title' => 'My Profile',
-			'route' => 'astrologer.profile',
-			'icon' => 'tf-icons bx bx-home-circle',
-			'role' => [User::ASTROLOGER],
-		],
-		
-
 		// Customer
 		[
 			'title' => 'Dashboard',
@@ -762,11 +741,9 @@ function postTypes()
 				'ContactUs' => 'Contact US Template',
 				'Blogs' => 'All Blog Template',
 				'Services' => 'Our Services Page',
-				'Appointment' => 'Appointment Template',
 				'Faqs' => 'Faqs Template',
 				'Testimonial' => 'Testimonial Template',
 				'PolicyPage' => 'Policy Page',
-				'Astrologers' => 'Astrologers Page',
 				'Shop' => 'Shop Page Template',
 				'ThankYou' => 'ThankYou Page',
 			],
@@ -778,7 +755,7 @@ function postTypes()
 			'title' => 'Blog',
 			'icon' => 'tf-icons bx bxl-blogger',
 			'slug' => 'blog',
-			'role' => [User::ADMIN, User::ASTROLOGER],
+			'role' => [User::ADMIN],
 			'showMenu' => true,
 			'multilng' => false,
 			'support' => ['excerpt', 'seo', 'featured', 'content'],

@@ -3,8 +3,8 @@
         <div class="home-slideshow">
             <div class="slide">
                 <div class="blur-up lazyload bg-size">
-                    <img class="blur-up lazyload bg-img" data-src="themeAssets/images/slideshow-banners/belle-banner1.jpg"
-                        src="themeAssets/images/slideshow-banners/belle-banner1.jpg" alt="Shop Our New Collection"
+                    <img class="blur-up lazyload bg-img" data-src="{{ publicPath('themeAssets/images/slideshow-banners/belle-banner1.jpg' ) }}"
+                        src="{{ publicPath('themeAssets/images/slideshow-banners/belle-banner1.jpg' ) }}" alt="Shop Our New Collection"
                         title="Shop Our New Collection" />
                     <div class="slideshow__text-wrap slideshow__overlay classic bottom">
                         <div class="slideshow__text-content bottom">
@@ -20,8 +20,8 @@
             </div>
             <div class="slide">
                 <div class="blur-up lazyload bg-size">
-                    <img class="blur-up lazyload bg-img" data-src="themeAssets/images/slideshow-banners/belle-banner2.jpg"
-                        src="themeAssets/images/slideshow-banners/belle-banner2.jpg" alt="Summer Bikini Collection"
+                    <img class="blur-up lazyload bg-img" data-src="{{ publicPath('themeAssets/images/slideshow-banners/belle-banner2.jpg' ) }}"
+                        src="{{ publicPath('themeAssets/images/slideshow-banners/belle-banner2.jpg' ) }}" alt="Summer Bikini Collection"
                         title="Summer Bikini Collection" />
                     <div class="slideshow__text-wrap slideshow__overlay classic bottom">
                         <div class="slideshow__text-content bottom">
@@ -62,14 +62,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image1.jpg"
-                                                    src="themeAssets/images/product-images/product-image1.jpg" alt="image"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image1.jpg' ) }}" alt="image"
                                                     title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image1-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image1-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image1-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image1-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                                 <!-- product label -->
@@ -135,22 +135,22 @@
                                             <!-- Variant -->
                                             <ul class="swatches">
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant1.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant1.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant2.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant2.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant3.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant3.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant4.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant4.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant5.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant5.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant6.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant6.jpg' ) }}"
                                                         alt="image" /></li>
                                             </ul>
                                             <!-- End Variant -->
@@ -164,14 +164,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image2.jpg"
-                                                    src="themeAssets/images/product-images/product-image2.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image2.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image2.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image2-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image2-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image2-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image2-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                             </a>
@@ -227,16 +227,16 @@
                                             <!-- Variant -->
                                             <ul class="swatches">
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant2-1.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant2-1.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant2-2.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant2-2.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant2-3.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant2-3.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant2-4.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant2-4.jpg' ) }}"
                                                         alt="image" /></li>
                                             </ul>
                                             <!-- End Variant -->
@@ -250,14 +250,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image3.jpg"
-                                                    src="themeAssets/images/product-images/product-image3.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image3.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image3.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image3-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image3-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image3-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image3-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                                 <!-- product label -->
@@ -318,16 +318,16 @@
                                             <!-- Variant -->
                                             <ul class="swatches">
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant3-1.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant3-1.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant3-2.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant3-2.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant3-3.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant3-3.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant3-4.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant3-4.jpg' ) }}"
                                                         alt="image" /></li>
                                             </ul>
                                             <!-- End Variant -->
@@ -341,14 +341,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image4.jpg"
-                                                    src="themeAssets/images/product-images/product-image4.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image4.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image4.jpg' ) }}"
                                                     alt="image" title="product" />
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image4-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image4-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image4-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image4-1.jpg' ) }}"
                                                     alt="image" title="product" />
                                                 <!-- End hover image -->
                                                 <!-- product label -->
@@ -410,16 +410,16 @@
                                             <!-- Variant -->
                                             <ul class="swatches">
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant4-1.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant4-1.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant4-2.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant4-2.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant4-3.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant4-3.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant4-4.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant4-4.jpg' ) }}"
                                                         alt="image" /></li>
                                             </ul>
                                             <!-- End Variant -->
@@ -433,14 +433,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image5.jpg"
-                                                    src="themeAssets/images/product-images/product-image5.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image5.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image5.jpg' ) }}"
                                                     alt="image" title="product" />
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image5-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image5-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image5-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image5-1.jpg' ) }}"
                                                     alt="image" title="product" />
                                                 <!-- End hover image -->
                                                 <!-- product label -->
@@ -501,16 +501,16 @@
                                             <!-- Variant -->
                                             <ul class="swatches">
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant3-1.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant3-1.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant3-2.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant3-2.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant3-3.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant3-3.jpg' ) }}"
                                                         alt="image" /></li>
                                                 <li class="swatch medium rounded"><img
-                                                        src="themeAssets/images/product-images/variant3-4.jpg"
+                                                        src="{{ publicPath('themeAssets/images/product-images/variant3-4.jpg' ) }}"
                                                         alt="image" /></li>
                                             </ul>
                                             <!-- End Variant -->
@@ -528,14 +528,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image6.jpg"
-                                                    src="themeAssets/images/product-images/product-image6.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image6.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image6.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image6-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image6-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image6-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image6-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                                 <!-- product label -->
@@ -604,14 +604,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image7.jpg"
-                                                    src="themeAssets/images/product-images/product-image7.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image7.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image7.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image7-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image7-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image7-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image7-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                             </a>
@@ -674,14 +674,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image8.jpg"
-                                                    src="themeAssets/images/product-images/product-image8.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image8.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image8.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image8-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image8-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image8-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image8-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                             </a>
@@ -746,14 +746,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image9.jpg"
-                                                    src="themeAssets/images/product-images/product-image9.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image9.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image9.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image9-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image9-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image9-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image9-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                             </a>
@@ -818,14 +818,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image10.jpg"
-                                                    src="themeAssets/images/product-images/product-image10.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image10.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image10.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image10-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image10-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image10-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image10-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                             </a>
@@ -893,14 +893,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image11.jpg"
-                                                    src="themeAssets/images/product-images/product-image11.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image11.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image11.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image11-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image11-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image11-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image11-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                             </a>
@@ -965,14 +965,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image12.jpg"
-                                                    src="themeAssets/images/product-images/product-image12.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image12.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image12.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image12-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image12-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image12-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image12-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                             </a>
@@ -1035,14 +1035,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image13.jpg"
-                                                    src="themeAssets/images/product-images/product-image13.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image13.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image13.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image13-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image13-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image13-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image13-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                             </a>
@@ -1107,14 +1107,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image14.jpg"
-                                                    src="themeAssets/images/product-images/product-image14.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image14.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image14.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image14-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image14-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image14-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image14-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                             </a>
@@ -1178,14 +1178,14 @@
                                             <a href="short-description.html">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image15.jpg"
-                                                    src="themeAssets/images/product-images/product-image15.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image15.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image15.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload"
-                                                    data-src="themeAssets/images/product-images/product-image15-1.jpg"
-                                                    src="themeAssets/images/product-images/product-image15-1.jpg"
+                                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image15-1.jpg' ) }}"
+                                                    src="{{ publicPath('themeAssets/images/product-images/product-image15-1.jpg' ) }}"
                                                     alt="image" title="product">
                                                 <!-- End hover image -->
                                             </a>
@@ -1258,8 +1258,8 @@
             <div class="collection-grid">
                 <div class="collection-grid-item">
                     <a href="collection-page.html" class="collection-grid-item__link">
-                        <img data-src="themeAssets/images/collection/fashion.jpg"
-                            src="themeAssets/images/collection/fashion.jpg" alt="Fashion" class="blur-up lazyload" />
+                        <img data-src="{{ publicPath('themeAssets/images/collection/fashion.jpg' ) }}"
+                            src="{{ publicPath('themeAssets/images/collection/fashion.jpg' ) }}" alt="Fashion" class="blur-up lazyload" />
                         <div class="collection-grid-item__title-wrapper">
                             <h3 class="collection-grid-item__title btn btn--secondary no-border">Fashion</h3>
                         </div>
@@ -1267,8 +1267,8 @@
                 </div>
                 <div class="collection-grid-item">
                     <a href="collection-page.html" class="collection-grid-item__link">
-                        <img class="blur-up lazyload" data-src="themeAssets/images/collection/cosmetic.jpg"
-                            src="themeAssets/images/collection/cosmetic.jpg" alt="Cosmetic" />
+                        <img class="blur-up lazyload" data-src="{{ publicPath('themeAssets/images/collection/cosmetic.jpg' ) }}"
+                            src="{{ publicPath('themeAssets/images/collection/cosmetic.jpg' ) }}" alt="Cosmetic" />
                         <div class="collection-grid-item__title-wrapper">
                             <h3 class="collection-grid-item__title btn btn--secondary no-border">Cosmetic</h3>
                         </div>
@@ -1276,7 +1276,7 @@
                 </div>
                 <div class="collection-grid-item blur-up lazyloaded">
                     <a href="collection-page.html" class="collection-grid-item__link">
-                        <img data-src="themeAssets/images/collection/bag.jpg" src="themeAssets/images/collection/bag.jpg"
+                        <img data-src="{{ publicPath('themeAssets/images/collection/bag.jpg' ) }}" src="{{ publicPath('themeAssets/images/collection/bag.jpg' ) }}"
                             alt="Bag" class="blur-up lazyload" />
                         <div class="collection-grid-item__title-wrapper">
                             <h3 class="collection-grid-item__title btn btn--secondary no-border">Bag</h3>
@@ -1285,8 +1285,8 @@
                 </div>
                 <div class="collection-grid-item">
                     <a href="collection-page.html" class="collection-grid-item__link">
-                        <img data-src="themeAssets/images/collection/accessories.jpg"
-                            src="themeAssets/images/collection/accessories.jpg" alt="Accessories"
+                        <img data-src="{{ publicPath('themeAssets/images/collection/accessories.jpg' ) }}"
+                            src="{{ publicPath('themeAssets/images/collection/accessories.jpg' ) }}" alt="Accessories"
                             class="blur-up lazyload" />
                         <div class="collection-grid-item__title-wrapper">
                             <h3 class="collection-grid-item__title btn btn--secondary no-border">Accessories
@@ -1296,7 +1296,7 @@
                 </div>
                 <div class="collection-grid-item">
                     <a href="collection-page.html" class="collection-grid-item__link">
-                        <img data-src="themeAssets/images/collection/shoes.jpg" src="themeAssets/images/collection/shoes.jpg"
+                        <img data-src="{{ publicPath('themeAssets/images/collection/shoes.jpg' ) }}" src="{{ publicPath('themeAssets/images/collection/shoes.jpg' ) }}"
                             alt="Shoes" class="blur-up lazyload" />
                         <div class="collection-grid-item__title-wrapper">
                             <h3 class="collection-grid-item__title btn btn--secondary no-border">Shoes</h3>
@@ -1305,8 +1305,8 @@
                 </div>
                 <div class="collection-grid-item">
                     <a href="collection-page.html" class="collection-grid-item__link">
-                        <img data-src="themeAssets/images/collection/jewellry.jpg"
-                            src="themeAssets/images/collection/jewellry.jpg" alt="Jewellry" class="blur-up lazyload" />
+                        <img data-src="{{ publicPath('themeAssets/images/collection/jewellry.jpg' ) }}"
+                            src="{{ publicPath('themeAssets/images/collection/jewellry.jpg' ) }}" alt="Jewellry" class="blur-up lazyload" />
                         <div class="collection-grid-item__title-wrapper">
                             <h3 class="collection-grid-item__title btn btn--secondary no-border">Jewellry</h3>
                         </div>
@@ -1324,22 +1324,22 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="logo-bar">
                         <div class="logo-bar__item">
-                            <img src="themeAssets/images/logo/brandlogo1.png" alt="" title="" />
+                            <img src="{{ publicPath('themeAssets/images/logo/brandlogo1.png') }}" alt="" title="" />
                         </div>
                         <div class="logo-bar__item">
-                            <img src="themeAssets/images/logo/brandlogo2.png" alt="" title="" />
+                            <img src="{{ publicPath('themeAssets/images/logo/brandlogo2.png') }}" alt="" title="" />
                         </div>
                         <div class="logo-bar__item">
-                            <img src="themeAssets/images/logo/brandlogo3.png" alt="" title="" />
+                            <img src="{{ publicPath('themeAssets/images/logo/brandlogo3.png') }}" alt="" title="" />
                         </div>
                         <div class="logo-bar__item">
-                            <img src="themeAssets/images/logo/brandlogo4.png" alt="" title="" />
+                            <img src="{{ publicPath('themeAssets/images/logo/brandlogo4.png') }}" alt="" title="" />
                         </div>
                         <div class="logo-bar__item">
-                            <img src="themeAssets/images/logo/brandlogo5.png" alt="" title="" />
+                            <img src="{{ publicPath('themeAssets/images/logo/brandlogo5.png') }}" alt="" title="" />
                         </div>
                         <div class="logo-bar__item">
-                            <img src="themeAssets/images/logo/brandlogo6.png" alt="" title="" />
+                            <img src="{{ publicPath('themeAssets/images/logo/brandlogo6.png') }}" alt="" title="" />
                         </div>
                     </div>
                 </div>
@@ -1367,14 +1367,14 @@
                             <a href="product-accordion.html" class="grid-view-item__link">
                                 <!-- image -->
                                 <img class="grid-view-item__image primary blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image1.jpg"
-                                    src="themeAssets/images/product-images/product-image1.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image1.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image1.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End image -->
                                 <!-- Hover image -->
                                 <img class="grid-view-item__image hover blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image1-1.jpg"
-                                    src="themeAssets/images/product-images/product-image1-1.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image1-1.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image1-1.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End hover image -->
                                 <!-- product label -->
@@ -1425,22 +1425,22 @@
                             </div>
                             <!-- Variant -->
                             <ul class="swatches text-center">
-                                <li class="swatch medium rounded"><img src="themeAssets/images/product-images/variant1.jpg"
+                                <li class="swatch medium rounded"><img src="{{ publicPath('themeAssets/images/product-images/variant1.jpg' ) }}"
                                         alt="image" />
                                 </li>
-                                <li class="swatch medium rounded"><img src="themeAssets/images/product-images/variant2.jpg"
+                                <li class="swatch medium rounded"><img src="{{ publicPath('themeAssets/images/product-images/variant2.jpg' ) }}"
                                         alt="image" />
                                 </li>
-                                <li class="swatch medium rounded"><img src="themeAssets/images/product-images/variant3.jpg"
+                                <li class="swatch medium rounded"><img src="{{ publicPath('themeAssets/images/product-images/variant3.jpg' ) }}"
                                         alt="image" />
                                 </li>
-                                <li class="swatch medium rounded"><img src="themeAssets/images/product-images/variant4.jpg"
+                                <li class="swatch medium rounded"><img src="{{ publicPath('themeAssets/images/product-images/variant4.jpg' ) }}"
                                         alt="image" />
                                 </li>
-                                <li class="swatch medium rounded"><img src="themeAssets/images/product-images/variant5.jpg"
+                                <li class="swatch medium rounded"><img src="{{ publicPath('themeAssets/images/product-images/variant5.jpg' ) }}"
                                         alt="image" />
                                 </li>
-                                <li class="swatch medium rounded"><img src="themeAssets/images/product-images/variant6.jpg"
+                                <li class="swatch medium rounded"><img src="{{ publicPath('themeAssets/images/product-images/variant6.jpg' ) }}"
                                         alt="image" />
                                 </li>
                             </ul>
@@ -1454,14 +1454,14 @@
                             <a href="product-accordion.html" class="grid-view-item__link">
                                 <!-- image -->
                                 <img class="grid-view-item__image primary blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image2.jpg"
-                                    src="themeAssets/images/product-images/product-image2.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image2.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image2.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End image -->
                                 <!-- Hover image -->
                                 <img class="grid-view-item__image hover blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image2-1.jpg"
-                                    src="themeAssets/images/product-images/product-image2-1.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image2-1.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image2-1.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End hover image -->
                                 <!-- product label -->
@@ -1511,16 +1511,16 @@
                             <!-- Variant -->
                             <ul class="swatches text-center">
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant2-1.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant2-1.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant2-2.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant2-2.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant2-3.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant2-3.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant2-4.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant2-4.jpg' ) }}" alt="image" />
                                 </li>
                             </ul>
                             <!-- End Variant -->
@@ -1533,14 +1533,14 @@
                             <a href="product-accordion.html" class="grid-view-item__link">
                                 <!-- image -->
                                 <img class="grid-view-item__image primary blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image3.jpg"
-                                    src="themeAssets/images/product-images/product-image3.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image3.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image3.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End image -->
                                 <!-- Hover image -->
                                 <img class="grid-view-item__image hover blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image3-1.jpg"
-                                    src="themeAssets/images/product-images/product-image3-1.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image3-1.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image3-1.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End hover image -->
                                 <!-- product label -->
@@ -1590,16 +1590,16 @@
                             <!-- Variant -->
                             <ul class="swatches text-center">
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant3-1.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant3-1.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant3-2.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant3-2.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant3-3.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant3-3.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant3-4.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant3-4.jpg' ) }}" alt="image" />
                                 </li>
                             </ul>
                             <!-- End Variant -->
@@ -1612,14 +1612,14 @@
                             <a href="product-accordion.html" class="grid-view-item__link">
                                 <!-- image -->
                                 <img class="grid-view-item__image primary blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image4.jpg"
-                                    src="themeAssets/images/product-images/product-image4.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image4.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image4.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End image -->
                                 <!-- Hover image -->
                                 <img class="grid-view-item__image hover blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image4-1.jpg"
-                                    src="themeAssets/images/product-images/product-image4-1.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image4-1.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image4-1.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End hover image -->
                                 <!-- product label -->
@@ -1669,16 +1669,16 @@
                             <!-- Variant -->
                             <ul class="swatches text-center">
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant4-1.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant4-1.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant4-2.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant4-2.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant4-3.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant4-3.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant4-4.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant4-4.jpg' ) }}" alt="image" />
                                 </li>
                             </ul>
                             <!-- End Variant -->
@@ -1691,14 +1691,14 @@
                             <a href="product-accordion.html" class="grid-view-item__link">
                                 <!-- image -->
                                 <img class="grid-view-item__image primary blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image5.jpg"
-                                    src="themeAssets/images/product-images/product-image5.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image5.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image5.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End image -->
                                 <!-- Hover image -->
                                 <img class="grid-view-item__image hover blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image5-1.jpg"
-                                    src="themeAssets/images/product-images/product-image5-1.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image5-1.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image5-1.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End hover image -->
                                 <!-- product label -->
@@ -1748,16 +1748,16 @@
                             <!-- Variant -->
                             <ul class="swatches text-center">
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant3-1.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant3-1.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant3-2.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant3-2.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant3-3.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant3-3.jpg' ) }}" alt="image" />
                                 </li>
                                 <li class="swatch medium rounded"><img
-                                        src="themeAssets/images/product-images/variant3-4.jpg" alt="image" />
+                                        src="{{ publicPath('themeAssets/images/product-images/variant3-4.jpg' ) }}" alt="image" />
                                 </li>
                             </ul>
                             <!-- End Variant -->
@@ -1770,14 +1770,14 @@
                             <a href="product-accordion.html" class="grid-view-item__link">
                                 <!-- image -->
                                 <img class="grid-view-item__image primary blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image16.jpg"
-                                    src="themeAssets/images/product-images/product-image16.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image16.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image16.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End image -->
                                 <!-- Hover image -->
                                 <img class="grid-view-item__image hover blur-up lazyload"
-                                    data-src="themeAssets/images/product-images/product-image16-1.jpg"
-                                    src="themeAssets/images/product-images/product-image16-1.jpg" alt="image"
+                                    data-src="{{ publicPath('themeAssets/images/product-images/product-image16-1.jpg' ) }}"
+                                    src="{{ publicPath('themeAssets/images/product-images/product-image16-1.jpg' ) }}" alt="image"
                                     title="product">
                                 <!-- End hover image -->
                             </a>
@@ -1843,7 +1843,7 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="wrap-blog">
                         <a href="blog-left-sidebar.html" class="article__grid-image">
-                            <img src="themeAssets/images/blog/post-img1.jpg" alt="It's all about how you wear"
+                            <img src="{{ publicPath('themeAssets/images/blog/post-img1.jpg' ) }}" alt="It's all about how you wear"
                                 title="It's all about how you wear" class="blur-up lazyloaded" />
                         </a>
                         <div class="article__grid-meta article__grid-meta--has-image">
@@ -1866,7 +1866,7 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="wrap-blog">
                         <a href="blog-left-sidebar.html" class="article__grid-image">
-                            <img src="themeAssets/images/blog/post-img2.jpg" alt="27 Days of Spring Fashion Recap"
+                            <img src="{{ publicPath('themeAssets/images/blog/post-img2.jpg' ) }}" alt="27 Days of Spring Fashion Recap"
                                 title="27 Days of Spring Fashion Recap" class="blur-up lazyloaded" />
                         </a>
                         <div class="article__grid-meta article__grid-meta--has-image">
