@@ -34,7 +34,7 @@ $headerMenuOptions = getChildMenus('primary_menu');
             <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
                 <span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
                 <ul class="customer-links list-inline">
-                    <li><a href="login.html">Login</a></li>
+                   <li><a href="{{ route('login.index') }}">Login</a></li>
                     <li><a href="register.html">Create Account</a></li>
                     <li><a href="wishlist.html">Wishlist</a></li>
                 </ul>
@@ -44,12 +44,16 @@ $headerMenuOptions = getChildMenus('primary_menu');
 </div>
 <!--End Top Header-->
 <!--Header-->
+@if (request()->is('/'))
 <div class="header-wrap classicHeader animated d-flex">
+@else
+<div class="header-wrap animated d-flex border-bottom">
+@endif
     <div class="container-fluid">
         <div class="row align-items-center">
             <!--Desktop Logo-->
             <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
-                <a href="index.html">
+                <a href="{{ route('homePage') }}">
                     <img src="{{ $headerOption['headerlogo'] }}" height="100px" alt="Belle Multipurpose Html Template"
                         title="Belle Multipurpose Html Template" />
                 </a>
@@ -79,7 +83,7 @@ $headerMenuOptions = getChildMenus('primary_menu');
             <!--Mobile Logo-->
             <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="{{ route('homePage') }}">
                         <img src="{{ $headerOption['headerlogo'] }}" alt="Belle Multipurpose Html Template"
                             title="Belle Multipurpose Html Template" />
                     </a>

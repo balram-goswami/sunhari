@@ -67,8 +67,8 @@ class HomeController extends Controller
       $post->posted_time = date('h:i A', strtotime($post->created_at));
       $view = 'Templates.' . $post->post_template;
     } else {
-      $view = 'Templates.NotFound';
-      return view('NotFound', compact('view', 'post'));
+      $view = 'errors.404';
+      return view('Front', compact('view', 'post'));
     }
     $breadcrumbs = [
       'title' => (isset($post->post_title) ? $post->post_title : appName()),
@@ -115,8 +115,8 @@ class HomeController extends Controller
       $relatedPosts = getPostsByPostType('post', '6', null, true, false, ['terms' => $termRelations, 'notPostId' => $post->post_id]);
       $view = 'Templates.' . $post->post_template;
     } else {
-      $view = 'Templates.NotFound';
-      return view('NotFound', compact('view', 'post'));
+      $view = 'errors.404';
+      return view('Front', compact('view', 'post'));
     }
 
     $breadcrumbs = [

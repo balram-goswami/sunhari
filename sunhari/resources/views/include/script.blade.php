@@ -9,6 +9,7 @@
 <script src="{{ publicPath('/themeAssets/js/popper.min.js') }}"></script>
 <script src="{{ publicPath('/themeAssets/js/lazysizes.js') }}"></script>
 <script src="{{ publicPath('/themeAssets/js/main.js') }}"></script>
+
 <!--For Newsletter Popup-->
 <script>
     jQuery(document).ready(function() {

@@ -26,7 +26,9 @@ class LoginController extends Controller
 
     public function index()
     {
-        return view('Auth.Login');
+        $view = "Templates.Login";
+
+        return view('Front', compact('view'));
     }
 
     /**
@@ -50,9 +52,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, true)) {
             Session::flash('success', "Login Successfully");
             $currentUser = getCurrentUser();
-            if ($currentUser->role == User::ASTROLOGER) {
-                return redirect()->route('astrologer.index');
-            } elseif ($currentUser->role == User::USER){
+            if ($currentUser->role == User::USER) {
                 return redirect()->route('customer.index');
             } else {
                 return redirect()->route('dashboard.index');
@@ -109,7 +109,7 @@ class LoginController extends Controller
         $this->userService->store($request);
         $user = $this->userService->getUserByEmail($request->input('email'));
         Auth::login($user);
-        
+
         // Update the cart to associate it with the new user
         Cart::where('visitor_id', $id)->update([
             'user_id' => $user->id,

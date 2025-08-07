@@ -1,6 +1,6 @@
 <div id="page-content">
     <!--Collection Banner-->
-    <div class="collection-header">
+    <div class="collection-header" style="margin-bottom: 30px;">
         <div class="collection-hero">
             <div class="collection-hero__image"><img class="blur-up lazyload" data-src="{{ publicPath('themeAssets//images/cat-women2.jpg') }}"
                     src="{{ publicPath('themeAssets//images/cat-women2.jpg') }}" alt="Women" title="Women" /></div>
