@@ -8,10 +8,10 @@ $headerOption = getThemeOptions('header');
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ $headerOption['meta_title'] }}</title>
-    <meta name="description" content="{{ $headerOption['meta_description'] }}">
+    <title>{{ $headerOption['meta_title'] ?? '' }}</title>
+    <meta name="description" content="{{ $headerOption['meta_description'] ?? ''}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{ $headerOption['headerfavicon'] }} " />
+    <link rel="shortcut icon" href="{{ $headerOption['headerfavicon'] ?? 'public\assets\img\icons\3.png'}} " />
 
     @include('Include.Style')
 

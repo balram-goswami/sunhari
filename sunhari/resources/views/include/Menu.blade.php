@@ -54,7 +54,7 @@ $headerMenuOptions = getChildMenus('primary_menu');
             <!--Desktop Logo-->
             <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
                 <a href="{{ route('homePage') }}">
-                    <img src="{{ $headerOption['headerlogo'] }}" height="100px" alt="Belle Multipurpose Html Template"
+                    <img src="{{ $headerOption['headerlogo'] ?? asset('assets/img/icons/1.png') }}" height="90px" alt="Belle Multipurpose Html Template"
                         title="Belle Multipurpose Html Template" />
                 </a>
             </div>
@@ -84,7 +84,7 @@ $headerMenuOptions = getChildMenus('primary_menu');
             <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
                 <div class="logo">
                     <a href="{{ route('homePage') }}">
-                        <img src="{{ $headerOption['headerlogo'] }}" alt="Belle Multipurpose Html Template"
+                        <img src="{{ $headerOption['headerlogo'] ?? asset('assets/img/icons/1.png') }}" alt="Belle Multipurpose Html Template"
                             title="Belle Multipurpose Html Template" />
                     </a>
                 </div>

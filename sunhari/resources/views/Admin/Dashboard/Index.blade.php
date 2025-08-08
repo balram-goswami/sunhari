@@ -14,9 +14,9 @@
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
                         <div class="card-body pb-0 px-0 px-md-4" style="margin-bottom: 10px;">
-                            <img src="../assets/img/illustrations/vdk_kndl.png" height="140" alt="View Badge User"
-                                data-app-dark-img="illustrations/vdk_kndl.png"
-                                data-app-light-img="illustrations/vdk_kndl.png" />
+                            <img src="../public/assets/img/icons/1.png" height="140" alt="View Badge User"
+                                data-app-dark-img="../public/assets/img/icons/1.png"
+                                data-app-light-img="../public/assets/img/icons/1.png" />
                         </div>
                     </div>
                 </div>
