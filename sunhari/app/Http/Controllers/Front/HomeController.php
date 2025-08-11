@@ -18,7 +18,8 @@ use App\Models\{
   Countries,
   User,
   UserDetails,
-  Cart
+  Cart,
+  Product
 };
 
 use Illuminate\Support\Facades\Http;
@@ -80,7 +81,9 @@ class HomeController extends Controller
         ['url' => '', 'title' => $post->post_title]
       ]
     ];
-    return view('Front', compact('view', 'post', 'breadcrumbs'));
+    $products = Product::get()->all();
+    
+    return view('Front', compact('view', 'post', 'breadcrumbs', 'products'));
   }
 
   public function singlePost($post_type, $page)

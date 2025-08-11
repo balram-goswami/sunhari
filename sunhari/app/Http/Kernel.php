@@ -65,7 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'adminToken' => \App\Http\Middleware\AdminToken::class,
         'customerToken' => \App\Http\Middleware\CustomerToken::class,
-        'astrologerToken' => \App\Http\Middleware\AstrologerToken::class,
         'visitorTracking' => \App\Http\Middleware\VisitorTracking::class
     ];
 }

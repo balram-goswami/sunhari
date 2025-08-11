@@ -1,11 +1,12 @@
 @php
 $headerMenuOptions = getChildMenus('primary_menu');
+$details = getThemeOptions('footer');
 @endphp
 <div class="top-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-10 col-sm-8 col-md-5 col-lg-4">
-                <div class="currency-picker">
+                {{-- <div class="currency-picker">
                     <span class="selected-currency">USD</span>
                     <ul id="currencies">
                         <li data-currency="INR" class="">INR</li>
@@ -23,8 +24,8 @@ $headerMenuOptions = getChildMenus('primary_menu');
                         <li class="">German</li>
                         <li class="">French</li>
                     </ul>
-                </div>
-                <p class="phone-no"><i class="anm anm-phone-s"></i> +440 0(111) 044 833</p>
+                </div> --}}
+                <p class="phone-no"><i class="anm anm-phone-s"></i><a href="tel:{{ $details['number'] }}"> {{ $details['number'] }}</a></p>
             </div>
             <div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
                 <div class="text-center">

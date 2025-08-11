@@ -130,68 +130,6 @@ function themeFieldArray()
                     'default' => '',
                 ], 
 
-                // About Section
-                [
-                    'title' =>'About Section Title',
-                    'id' => 'about_sec_title1',
-                    'type' => 'text',
-                    'placeholder' =>'About Section Title',
-                    'default' => '',
-                ], 
-                [
-                    'title' =>'About Section Text',
-                    'id' => 'about_sec_text1',
-                    'type' => 'text',
-                    'placeholder' =>'About Section Text',
-                    'default' => '',
-                ], 
-                [
-                    'title' =>'About Section Short Title',
-                    'id' => 'about_sec_title2',
-                    'type' => 'text',
-                    'placeholder' =>'About Short Title',
-                    'default' => '',
-                ],
-                [
-                    'title' =>'About Section Short Text',
-                    'id' => 'about_sec_text2',
-                    'type' => 'text',
-                    'placeholder' =>'About Short Text',
-                    'default' => '',
-                ], 
-                
-
-                // Why Choose Us
-                [
-                    'title' =>'Why Choose Us Title',
-                    'id' => 'wcu_sec_title',
-                    'type' => 'text',
-                    'placeholder' =>'Why Choose Us Title',
-                    'default' => '',
-                ], 
-                [
-                    'title' =>'Why Choose Us Text',
-                    'id' => 'wcu_sec_text',
-                    'type' => 'text',
-                    'placeholder' =>'Why Choose Us Text',
-                    'default' => '',
-                ], 
-
-                // Our Services
-                [
-                    'title' =>'Our Services Title',
-                    'id' => 'services_sec_title',
-                    'type' => 'text',
-                    'placeholder' =>'Our Services Title',
-                    'default' => '',
-                ], 
-                [
-                    'title' =>'Our Services Text',
-                    'id' => 'services_sec_text',
-                    'type' => 'text',
-                    'placeholder' =>'Our Services Text',
-                    'default' => '',
-                ], 
 
 
             ]
@@ -219,19 +157,26 @@ function themeFieldArray()
                     'default' => '',
                 ],
                 [
+                    'title' =>'Number',
+                    'id' => 'number',
+                    'type' => 'text',
+                    'placeholder' =>'Contact Number',
+                    'default' => '',
+                ],
+                [
+                    'title' =>'Email',
+                    'id' => 'email',
+                    'type' => 'text',
+                    'placeholder' =>'E-Mail',
+                    'default' => '',
+                ],
+                [
                     'title' =>'Address',
                     'id' => 'address',
                     'type' => 'text',
                     'placeholder' =>'Address',
                     'default' => '',
                 ], 
-                [
-                    'title' =>'News Letter Text',
-                    'id' => 'news',
-                    'type' => 'text',
-                    'placeholder' =>'News Letter Text',
-                    'default' => '',
-                ],
                 [
                     'title' =>'CopyRight',
                     'id' => 'footercopyright',

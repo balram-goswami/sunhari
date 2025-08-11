@@ -540,7 +540,6 @@ function userTypes()
 {
 	return [
 		User::ADMIN => 'Admin',
-		User::ASTROLOGER => 'Astrologer',
 		User::USER => 'User'
 	];
 }
@@ -816,20 +815,6 @@ function postTypes()
 			'taxonomy' => []
 		],
 
-		'tagManager' => [
-			'area' => 'Admin',
-			'title' => 'Tag Manager',
-			'icon' => 'tf-icons bx bxl-patreon',
-			'slug' => 'tagManager',
-			'role' => [User::ADMIN],
-			'showMenu' => false,
-			'multilng' => false,
-			'support' => [],
-			'templateOption' => [
-				'PostDefault' => 'Default Template',
-			],
-			'taxonomy' => []
-		],
 
 	];
 }

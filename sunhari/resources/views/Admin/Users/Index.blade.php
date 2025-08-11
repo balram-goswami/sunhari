@@ -28,32 +28,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h4 class="fw-bold py-3 mb-0 pull-left">Astrologers</h4>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive text-nowrap">
-                <table class="table table-bordered table-striped yajra-datatable" id="astralogerDatatable">
-                    <thead>
-                        <tr>
-                            <th>Photo</th>
-                            <th>name</th>
-                            <th>email</th>
-                            <th>role</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-xxl flex-grow-1 container-p-y">
-    <div class="card mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h4 class="fw-bold py-3 mb-0 pull-left">Our Custemors</h4>
+            <h4 class="fw-bold py-3 mb-0 pull-left">Our Customers</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive text-nowrap">

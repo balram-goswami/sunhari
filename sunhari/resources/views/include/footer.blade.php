@@ -1,4 +1,7 @@
 <!--Footer-->
+@php
+$details = getThemeOptions('footer');
+@endphp
 <footer id="footer">
     <div class="newsletter-section">
         <div class="container">
@@ -98,13 +101,13 @@
                         <h4 class="h4">Contact Us</h4>
                         <ul class="addressFooter">
                             <li><i class="icon anm anm-map-marker-al"></i>
-                                <p>55 Gallaxy Enque,<br>2568 steet, 23568 NY</p>
+                                <p>{{ $details['address'] }}</p>
                             </li>
                             <li class="phone"><i class="icon anm anm-phone-s"></i>
-                                <p>(440) 000 000 0000</p>
+                                <p>{{ $details['number'] }}</p>
                             </li>
                             <li class="email"><i class="icon anm anm-envelope-l"></i>
-                                <p>sales@yousite.com</p>
+                                <p>{{ $details['email'] }}</p>
                             </li>
                         </ul>
                     </div>
@@ -117,7 +120,7 @@
                     <!--Footer Copyright-->
                     <div
                         class="col-12 col-sm-12 col-md-6 col-lg-6 order-1 order-md-0 order-lg-0 order-sm-1 copyright text-sm-center text-md-left text-lg-left">
-                        <span></span> <a href="templateshub.net">Templates Hub</a>
+                        <span></span> <a href="{{ route('homePage')}}">Sunhari -  All right reserved</a>
                     </div>
                     <!--End Footer Copyright-->
                     <!--Footer Payment Icon-->
@@ -309,8 +312,9 @@
         <a class="btn closepopup"><i class="icon icon anm anm-times-l"></i></a>
         <!-- Modal content-->
         <div class="display-table splash-bg">
-            <div class="display-table-cell width40"><img src="{ publicPath('themeAssets/images/newsletter-img.jpg') }}"
-                    alt="Join Our Mailing List" title="Join Our Mailing List" /> </div>
+            <div class="display-table-cell width40"><img
+                    src="{ publicPath('themeAssets/images/newsletter-img.jpg') }}" alt="Join Our Mailing List"
+                    title="Join Our Mailing List" /> </div>
             <div class="display-table-cell width60 text-center">
                 <div class="newsletter-left">
                     <h2>Join Our Mailing List</h2>
@@ -346,7 +350,6 @@
         </div>
     </div>
 </div>
-<!-- End Newsletter Popup -->
 
 @include('Include.Script')
 </div>
