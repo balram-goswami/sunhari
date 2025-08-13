@@ -1,271 +1,183 @@
-@include('Include.Style')
-<style>
-    * {
-        padding: 0;
-        margin: 0;
-        color: #1a1f36;
-        box-sizing: border-box;
-        word-wrap: break-word;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, sans-serif;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Login Form</title>
+    <style>
+        /* General Layout */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
 
+        /* Wrapper */
+        .login-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
 
+        /* Card */
+        .login-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 0.6s ease-in-out;
+        }
 
-    h1 {
-        letter-spacing: -1px;
-    }
+        /* Title */
+        .login-title {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            font-size: 1.4rem;
+        }
 
-    a {
-        color: #DD3631;
-        text-decoration: unset;
-    }
+        /* Floating Label Inputs */
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
 
-    .flex-flex {
-        display: flex;
-    }
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: none;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
 
+        .input-group label {
+            position: absolute;
+            top: 50%;
+            left: 14px;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 0.9rem;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            background: white;
+            padding: 0 4px;
+        }
 
+        /* Move label when focused or valid */
+        .input-group input:focus + label,
+        .input-group input:valid + label {
+            top: -8px;
+            font-size: 0.75rem;
+            color: #667eea;
+        }
 
-    .box-root {
-        box-sizing: border-box;
-    }
+        .input-group input:focus {
+            border-color: #667eea;
+        }
 
-    .flex-direction--column {
-        -ms-flex-direction: column;
-        flex-direction: column;
-    }
+        /* Options */
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
 
-    .loginbackground-gridContainer {
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-columns: [start] 1fr [left-gutter] (86.6px)[16] [left-gutter] 1fr [end];
-        grid-template-columns: [start] 1fr [left-gutter] repeat(16, 86.6px) [left-gutter] 1fr [end];
-        -ms-grid-rows: [top] 1fr [top-gutter] (64px)[8] [bottom-gutter] 1fr [bottom];
-        grid-template-rows: [top] 1fr [top-gutter] repeat(8, 64px) [bottom-gutter] 1fr [bottom];
-        justify-content: center;
-        margin: 0 -2%;
-        transform: rotate(-12deg) skew(-12deg);
-    }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-    .box-divider--light-all-2 {
-        box-shadow: inset 0 0 0 2px #e3e8ee;
-    }
+        .forgot-link {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-    .box-background--blue {
-        background-color: #DD3631;
-    }
+        .forgot-link:hover {
+            color: #764ba2;
+        }
 
-    .box-background--white {
-        background-color: #ffffff;
-    }
+        /* Button */
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: 600;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+        }
 
-    .box-background--blue800 {
-        background-color: #DD3631;
-    }
+        .login-btn:hover {
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+        }
 
-    .box-background--gray100 {
-        background-color: #e3e8ee;
-    }
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .box-background--cyan200 {
-        background-color: #7fd3ed;
-    }
-
-    .padding-top--64 {
-        padding-top: 64px;
-    }
-
-    .padding-top--24 {
-        padding-top: 24px;
-    }
-
-    .padding-top--48 {
-        padding-top: 48px;
-    }
-
-    .padding-bottom--24 {
-        padding-bottom: 24px;
-    }
-
-    .padding-horizontal--48 {
-        padding: 48px;
-    }
-
-    .padding-bottom--15 {
-        padding-bottom: 15px;
-    }
-
-
-    .flex-justifyContent--center {
-        -ms-flex-pack: center;
-        justify-content: center;
-    }
-
-    .formbg {
-        margin: 0px auto;
-        width: 100%;
-        max-width: 448px;
-        background: white;
-        border-radius: 4px;
-        box-shadow: #2d2d2d 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
-    }
-
-    span {
-        display: block;
-        font-size: 20px;
-        line-height: 28px;
-        color: #1a1f36;
-    }
-
-    label {
-        margin-bottom: 10px;
-    }
-
-    .reset-pass a,
-    label {
-        font-size: 14px;
-        font-weight: 600;
-        display: block;
-    }
-
-    .reset-pass>a {
-        text-align: right;
-        margin-bottom: 10px;
-    }
-
-    .grid--50-50 {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        align-items: center;
-    }
-
-    .field input {
-        font-size: 16px;
-        line-height: 28px;
-        padding: 8px 16px;
-        width: 100%;
-        min-height: 44px;
-        border: unset;
-        border-radius: 4px;
-        outline-color: rgb(84 105 212 / 0.5);
-        background-color: rgb(255, 255, 255);
-        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-            rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
-            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-            rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-    }
-
-    input[type="submit"] {
-        background-color: rgb(84, 105, 212);
-        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-            rgba(0, 0, 0, 0.12) 0px 1px 1px 0px,
-            rgb(84, 105, 212) 0px 0px 0px 1px,
-            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-            rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
-        color: #fff;
-        font-weight: 600;
-        cursor: pointer;
-    }
-
-    .field-checkbox input {
-        width: 20px;
-        height: 15px;
-        margin-right: 5px;
-        box-shadow: unset;
-        min-height: unset;
-    }
-
-    .field-checkbox label {
-        display: flex;
-        align-items: center;
-        margin: 0;
-    }
-
-
-    .ast_banner_text {
-        float: left;
-        width: 100%;
-        text-align: center;
-        color: #fff;
-        position: relative;
-        overflow: hidden;
-        padding: 100px 0px;
-    }
-</style>
-
+        /* Mobile */
+        @media (max-width: 500px) {
+            .login-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-    <div class="row">
-        <div class="ast_slider_wrapper"
-            style="background-image: url('{{ asset('assets/img/backgrounds/1920x950.jpg') }}');">
+<div class="login-wrapper">
+    <div class="login-card">
+        <h2 class="login-title">Sign in to your account</h2>
 
-            <div class="ast_banner_text">
-                <div class="starfield">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="ast_waves">
-                    <div class="ast_wave"></div>
-                    <div class="ast_wave"></div>
-                    <div class="ast_wave"></div>
-                </div>
-                <div class="ast_waves2">
-                    <div class="ast_wave"></div>
-                    <div class="ast_wave"></div>
-                    <div class="ast_wave"></div>
-                </div>
-                <div class="ast_waves3">
-                    <div class="ast_wave"></div>
-                    <div class="ast_wave"></div>
-                    <div class="ast_wave"></div>
-                </div>
-                <div class="box-root padding-top--24 flex-flex flex-direction--column"
-                    style="flex-grow: 1; z-index: 9;">
-                    <div class="formbg-outer">
-                        <div class="formbg">
-                            <div class="formbg-inner padding-horizontal--48">
-                                <span class="padding-bottom--15">Sign in to your account</span>
-                                <form action="{{ route('login.store') }}" method="POST" class="login mb-3"
-                                    id="formAuthentication">
-                                    @csrf
-                                    <div class="field padding-bottom--24">
-                                        <input type="email" id="email" name="email" placeholder="Your Email"
-                                            required>
-                                    </div>
-                                    <div class="field padding-bottom--24">
+        <form action="{{ route('login.store') }}" method="POST" id="formAuthentication">
+            @csrf
 
-                                        <input type="password" id="password" name="password" placeholder="Password"
-                                            required>
-                                    </div>
-                                    <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
-                                        <div class="grid--50-50">
-                                            <label for="stay_signed_in">
-                                                <input type="checkbox" id="stay_signed_in" name="stay_signed_in"> Stay
-                                                Signed In
-                                            </label>
-                                            <div class="reset-pass">
-                                                <a href="{{ route('forgot-password.index') }}">Forgot your password?</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="field padding-bottom--24">
-                                        <input type="submit" name="submit" value="Sign In">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="input-group">
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email Address</label>
             </div>
-        </div>
 
-        @include('Include.Script')
+            <div class="input-group">
+                <input type="password" id="password" name="password" required>
+                <label for="password">Password</label>
+            </div>
+
+            <div class="options">
+                <label>
+                    <input type="checkbox" name="stay_signed_in"> Stay Signed In
+                </label>
+                <a href="{{ route('forgot-password.index') }}" class="forgot-link">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="login-btn">Sign In</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

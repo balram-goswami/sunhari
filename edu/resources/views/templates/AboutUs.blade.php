@@ -16,9 +16,7 @@
         </div>
     </div>
 </section>
-<!--================End Home Banner Area =================-->
 
-<!--================ Start About Area =================-->
 <section class="about_area section_gap">
     <div class="container">
         <div class="row h_blog_item">
@@ -129,9 +127,6 @@
     </div>
 </section>
 
-<!--================ End About Area =================-->
-
-<!--================ Start Feature Area =================-->
 <section class="feature_area section_gap_top title-bg">
     <div class="container">
         <div class="row justify-content-center">
@@ -152,9 +147,7 @@
 
     </div>
 </section>
-<!--================ End Feature Area =================-->
 
-<!--================ Start Testimonial Area =================-->
 <div class="testimonial_area section_gap">
     <div class="container">
         <div class="row justify-content-center">

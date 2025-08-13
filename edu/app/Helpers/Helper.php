@@ -16,10 +16,10 @@ use App\Models\{
 	VisitorData,
 	Category,
 	Product,
-    ProductCategory,
-    ProductGallery,
-    ProductTag,
-    ProductVariation
+	ProductCategory,
+	ProductGallery,
+	ProductTag,
+	ProductVariation
 };
 
 function appName()
@@ -667,38 +667,6 @@ function getMenus()
 			'icon' => 'tf-icons bx bx-list-ul',
 			'role' => [User::ADMIN],
 		],
-		[
-			'title' => 'Product',
-			'route' => null,
-			'icon' => 'tf-icons bx bxs-vector',
-			'role' => [User::ADMIN],
-			'childs' => [
-				[
-					'title' => 'View',
-					'route' => 'products.index',
-				],
-				[
-					'title' => 'Add',
-					'route' => 'products.create',
-				],
-				[
-					'title' => 'Category',
-					'route' => 'category.index',
-				],
-				[
-					'title' => 'Tag',
-					'route' => 'tags.index',
-				],
-				[
-					'title' => 'Variations',
-					'route' => 'variations.index',
-				],
-				[
-					'title' => 'Orders',
-					'route' => 'orders.index',
-				]
-			]
-		],
 
 		// Customer
 		[
@@ -735,16 +703,16 @@ function postTypes()
 			'multilng' => false,
 			'support' => ['content', 'excerpt', 'seo', 'featured'],
 			'templateOption' => [
-				'PostDefault' => 'Default Template',
-				'AboutUs' => 'About US Template',
-				'ContactUs' => 'Contact US Template',
-				'Blogs' => 'All Blog Template',
-				'Services' => 'Our Services Page',
-				'Faqs' => 'Faqs Template',
-				'Testimonial' => 'Testimonial Template',
-				'PolicyPage' => 'Policy Page',
-				'Shop' => 'Shop Page Template',
-				'ThankYou' => 'ThankYou Page',
+				'PostDefault' 	=> 'Default Template',
+				'AboutUs' 		=> 'About US Template',
+				'ContactUs' 	=> 'Contact US Template',
+				'Blogs' 		=> 'All Blog Template',
+				'Services' 		=> 'Our Services Page',
+				'Faqs' 			=> 'Faqs Template',
+				'Testimonial' 	=> 'Testimonial Template',
+				'PolicyPage' 	=> 'Policy Page',
+				'ThankYou' 		=> 'ThankYou Page',
+				'AllTours'		=> 'All Tours'
 			],
 			'taxonomy' => []
 		],
@@ -778,6 +746,37 @@ function postTypes()
 				],
 			]
 		],
+
+		'tour' => [
+			'area' => 'Admin',
+			'title' => 'Tours',
+			'icon' => 'tf-icons bx bxl-blogger',
+			'slug' => 'tour',
+			'role' => [User::ADMIN],
+			'showMenu' => true,
+			'multilng' => false,
+			'support' => ['seo', 'featured'],
+			'templateOption' => [
+				'Tours'	=> 'Tour Single Page'
+			],
+			'taxonomy' => [
+				'category' => [
+					'title' => 'Category',
+					'slug' => 'category',
+					'showMenu' => true,
+					'showPost' => [],
+					'hasVariations' => false
+				],
+				'tag' => [
+					'title' => 'Tags',
+					'slug' => 'tag',
+					'showMenu' => true,
+					'showPost' => [],
+					'hasVariations' => false
+				],
+			]
+		],
+
 		'why_choose_us' => [
 			'area' => 'Admin',
 			'title' => 'Why Choose US',
@@ -800,21 +799,6 @@ function postTypes()
 				]
 			]
 		],
-		'coupon' => [
-			'area' => 'Admin',
-			'title' => 'Coupon',
-			'icon' => 'tf-icons bx bxl-blogger',
-			'slug' => 'coupon',
-			'role' => [User::ADMIN],
-			'showMenu' => false,
-			'multilng' => false,
-			'support' => [],
-			'templateOption' => [
-				'PostDefault' => 'Default Template',
-			],
-			'taxonomy' => []
-		],
-
 
 	];
 }
@@ -1027,11 +1011,8 @@ function addPostMetaBox($post_type,  $post_id)
 		case 'tagManager':
 			$postBoxHtml = posttagManagerMetaBox($post_id);
 			break;
-		case 'products':
-			$postBoxHtml = postproductsMetaBox($post_id);
-			break;
-		case 'coupon':
-			$postBoxHtml = postcouponMetaBox($post_id);
+		case 'tour':
+			$postBoxHtml = posttourMetaBox($post_id);
 			break;
 
 		default:
@@ -1055,11 +1036,8 @@ function insertUpdatePostMetaBox($post_type, $request, $post_id)
 		case 'tagManager':
 			insertUpdatetagManagerPostMetaBox($request, $post_id);
 			break;
-		case 'products':
-			insertUpdateproductsPostMetaBox($request, $post_id);
-			break;
-		case 'coupon':
-			insertUpdatecouponPostMetaBox($request, $post_id);
+		case 'tour':
+			insertUpdatetourPostMetaBox($request, $post_id);
 			break;
 		default:
 			return;
@@ -1078,162 +1056,87 @@ function postPostMetaBox($post_id)
 }
 function insertUpdatePostPostMetaBox($request, $post_id) {}
 
-/**products post meta action***/
-function postproductsMetaBox($post_id)
+
+function posttourMetaBox($post_id)
 {
 	ob_start();
 ?>
 	<br>
-	<div class="input-group row">
-		<h5 style="color: red;">Product Details</h5>
-		<div class="col-md-4">
-			<label class="col-form-label" for="sku">SKU*</label><br>
-			<input type="text" name="sku" id="sku" class="form-control form-control-lg" placeholder="SKU" value="<?php echo getPostMeta($post_id, 'sku') ?>">
-			<span class="md-line"></span>
-		</div>
-		<div class="col-md-4">
-			<label class="col-form-label" for="stock_quantity">Stock Quantity</label><br>
-			<input type="text" name="stock_quantity" id="stock_quantity" class="form-control form-control-lg" placeholder="Stock Quantity" value="<?php echo getPostMeta($post_id, 'stock_quantity') ?>">
-			<span class="md-line"></span>
-		</div>
-		<div class="col-md-4">
-			<label class="col-form-label" for="price_regular">Regular price (INR ₹)*</label><br>
-			<input required type="text" name="price_regular" id="price_regular" class="form-control form-control-lg" placeholder="Regular price (INR ₹)" value="<?php echo getPostMeta($post_id, 'price_regular') ?>">
-			<span class="md-line"></span>
-		</div>
+	<div class="col-md-12">
+		<label class="col-form-label" for="page_title">Page Title</label><br>
+		<input type="text" name="page_title" id="page_title" class="form-control form-control-lg" placeholder="Title" value="<?php echo getPostMeta($post_id, 'page_title') ?>">
+		<span class="md-line"></span>
+	</div>
+	<div class="col-md-12">
+		<label class="col-form-label" for="page_text">Page Text</label><br>
+		<input type="texte" name="page_text" id="page_text" class="form-control form-control-lg" placeholder="Text" value="<?php echo getPostMeta($post_id, 'page_text') ?>">
+		<span class="md-line"></span>
 	</div>
 	<br>
-	<div class="input-group row">
-		<h5 style="color: red;">Product Multiple Images (Size:- 500x500px)</h5>
-		<div class="col-md-3 imageUploadGroup">
-			<label class="col-form-label" for="img_1">Image</label><br>
-			<img src="<?php echo publicPath(getPostMeta($post_id, 'img_1')) ?>" id="img_1-img" style="width: 100%;height: 200px;">
-			<button type="button" data-eid="img_1" class="btn btn-success setFeaturedImage">Select image</button>
-			<button type="button" data-eid="img_1" class="btn btn-warning removeFeaturedImage">Remove image</button>
-			<input type="hidden" name="img_1" id="img_1" value="<?php echo getPostMeta($post_id, 'img_1') ?>">
-		</div>
-		<div class="col-md-3 imageUploadGroup">
-			<label class="col-form-label" for="img_2">Image</label><br>
-			<img src="<?php echo publicPath(getPostMeta($post_id, 'img_2')) ?>" id="img_2-img" style="width: 100%;height: 200px;">
-			<button type="button" data-eid="img_2" class="btn btn-success setFeaturedImage">Select image</button>
-			<button type="button" data-eid="img_2" class="btn btn-warning removeFeaturedImage">Remove image</button>
-			<input type="hidden" name="img_2" id="img_2" value="<?php echo getPostMeta($post_id, 'img_2') ?>">
-		</div>
-		<div class="col-md-3 imageUploadGroup">
-			<label class="col-form-label" for="img_3">Image</label><br>
-			<img src="<?php echo publicPath(getPostMeta($post_id, 'img_3')) ?>" id="img_3-img" style="width: 100%;height: 200px;">
-			<button type="button" data-eid="img_3" class="btn btn-success setFeaturedImage">Select image</button>
-			<button type="button" data-eid="img_3" class="btn btn-warning removeFeaturedImage">Remove image</button>
-			<input type="hidden" name="img_3" id="img_3" value="<?php echo getPostMeta($post_id, 'img_3') ?>">
-		</div>
-		<div class="col-md-3 imageUploadGroup">
-			<label class="col-form-label" for="img_4">Image</label><br>
-			<img src="<?php echo publicPath(getPostMeta($post_id, 'img_4')) ?>" id="img_4-img" style="width: 100%;height: 200px;">
-			<button type="button" data-eid="img_4" class="btn btn-success setFeaturedImage">Select image</button>
-			<button type="button" data-eid="img_4" class="btn btn-warning removeFeaturedImage">Remove image</button>
-			<input type="hidden" name="img_4" id="img_4" value="<?php echo getPostMeta($post_id, 'img_4') ?>">
-		</div>
-	</div>
-	<br>
-	<div class="input-group row">
-		<h5 style="color: red;">Sale Details</h5>
-		<div class="col-md-12">
-			<label class="col-form-label" for="sale_regular">Sale price (INR ₹)</label><br>
-			<input type="text" name="sale_regular" id="sale_regular" class="form-control form-control-lg" placeholder="Sale price (INR ₹)" value="<?php echo getPostMeta($post_id, 'sale_regular') ?>">
-			<span class="md-line"></span>
-		</div>
-		<div class="col-md-6">
-			<label class="col-form-label" for="sale_start_date">Sale start Date</label><br>
-			<input type="date" name="sale_start_date" id="sale_start_date" class="form-control form-control-lg" placeholder="Sale start Date" value="<?php echo getPostMeta($post_id, 'sale_start_date') ?>">
-			<span class="md-line"></span>
-		</div>
-		<div class="col-md-6">
-			<label class="col-form-label" for="sale_end_date">Sale End Date</label><br>
-			<input type="date" name="sale_end_date" id="sale_end_date" class="form-control form-control-lg" placeholder="Sale End Date" value="<?php echo getPostMeta($post_id, 'sale_end_date') ?>">
-			<span class="md-line"></span>
-		</div>
-	</div>
-	<br>
-	<div class="input-group row">
-		<h5 style="color: red;">Tax Details</h5>
-		<div class="col-md-6">
-			<label class="col-form-label" for="tax_status">Tax Status</label><br>
-			<select name="tax_status" id="tax_status" class="form-control form-control-lg">
-				<option value="non_taxable" <?php echo (getPostMeta($post_id, 'tax_status') == 'non_taxable') ? 'selected' : ''; ?>>None</option>
-				<option value="taxable" <?php echo (getPostMeta($post_id, 'tax_status') == 'taxable') ? 'selected' : ''; ?>>Taxable</option>
-				<option value="shipping_only" <?php echo (getPostMeta($post_id, 'tax_status') == 'shipping_only') ? 'selected' : ''; ?>>Shipping Only</option>
-			</select>
-			<span class="md-line"></span>
-		</div>
-		<div class="col-md-6">
-			<label class="col-form-label" for="tax_class">Tax Class</label><br>
-			<select name="tax_class" id="tax_class" class="form-control form-control-lg">
-				<option value="standerd" <?php echo (getPostMeta($post_id, 'tax_class') == 'standerd') ? 'selected' : ''; ?>>Standers</option>
-				<option value="reduce_rate" <?php echo (getPostMeta($post_id, 'tax_class') == 'reduce_rate') ? 'selected' : ''; ?>>Reduce Rate</option>
-				<option value="zero_rate" <?php echo (getPostMeta($post_id, 'tax_class') == 'zero_rate') ? 'selected' : ''; ?>>Zero Rate</option>
-			</select>
-			<span class="md-line"></span>
-		</div>
-	</div>
+	<h5 class="text-danger mb-3">Tour Information</h5>
 
-	<script>
-		document.querySelector('form').addEventListener('submit', function(event) {
-			var startDate = document.getElementById('sale_start_date').value;
-			var endDate = document.getElementById('sale_end_date').value;
+	<?php for ($i = 1; $i <= 10; $i++): ?>
+		<div class="row mb-4">
+			<div class="col-12">
+				<h5 class="text-primary">Step <?php echo $i; ?></h5>
+			</div>
 
-			if (startDate && endDate && startDate >= endDate) {
-				event.preventDefault(); // Prevent form submission
-				alert("Sale start date must be less than the sale end date.");
-			}
-		});
-	</script>
+			<!-- Step Title -->
+			<div class="col-md-4 mb-3">
+				<input type="text"
+					name="step_<?php echo $i; ?>_title"
+					id="step_<?php echo $i; ?>_title"
+					class="form-control form-control-lg"
+					placeholder="Step <?php echo $i; ?> Title"
+					value="<?php echo getPostMeta($post_id, "step_{$i}_title"); ?>">
+			</div>
+
+			<!-- Step Text -->
+			<div class="col-md-4 mb-3">
+				<input type="text"
+					name="step_<?php echo $i; ?>_text"
+					id="step_<?php echo $i; ?>_text"
+					class="form-control form-control-lg"
+					placeholder="Step <?php echo $i; ?> Text"
+					value="<?php echo getPostMeta($post_id, "step_{$i}_text"); ?>">
+			</div>
+
+			<!-- Step Image -->
+			<div class="col-md-4 mb-3 imageUploadGroup">
+				<label class="form-label fw-bold" for="step_<?php echo $i; ?>_img">Image</label>
+				<div class="mb-2">
+					<img src="<?php echo publicPath(getPostMeta($post_id, "step_{$i}_img")); ?>"
+						id="step_<?php echo $i; ?>_img-img"
+						class="img-fluid rounded border"
+						style="max-height: 200px; object-fit: cover;">
+				</div>
+				<div class="d-flex gap-2">
+					<button type="button" data-eid="step_<?php echo $i; ?>_img" class="btn btn-success btn-sm setFeaturedImage">
+						Select Image
+					</button>
+					<button type="button" data-eid="step_<?php echo $i; ?>_img" class="btn btn-warning btn-sm removeFeaturedImage">
+						Remove Image
+					</button>
+				</div>
+				<input type="hidden" name="step_<?php echo $i; ?>_img" id="step_<?php echo $i; ?>_img"
+					value="<?php echo getPostMeta($post_id, "step_{$i}_img"); ?>">
+			</div>
+		</div>
+	<?php endfor; ?>
+
 <?php
 	return ob_get_clean();
 }
-function insertUpdateproductsPostMetaBox($request, $post_id)
-{
-	updatePostMeta($post_id, 'sku', $request->sku);
-	updatePostMeta($post_id, 'stock_quantity', $request->stock_quantity);
-	updatePostMeta($post_id, 'price_regular', $request->price_regular);
-	updatePostMeta($post_id, 'img_1', $request->img_1);
-	updatePostMeta($post_id, 'img_2', $request->img_2);
-	updatePostMeta($post_id, 'img_3', $request->img_3);
-	updatePostMeta($post_id, 'img_4', $request->img_4);
-	updatePostMeta($post_id, 'sale_regular', $request->sale_regular);
-	updatePostMeta($post_id, 'sale_start_date', $request->sale_start_date);
-	updatePostMeta($post_id, 'sale_end_date', $request->sale_end_date);
-	updatePostMeta($post_id, 'tax_status', $request->tax_status);
-	updatePostMeta($post_id, 'tax_class', $request->tax_class);
-}
 
-function postcouponMetaBox($post_id)
+function insertUpdatetourPostMetaBox($request, $post_id)
 {
-	ob_start();
-?>
-	<br>
-	<div class="input-group row">
-		<h5 style="color: red;">Coupon Details</h5>
-		<div class="col-md-6">
-			<label class="col-form-label" for="coupon_type">Coupon Type</label><br>
-			<select name="coupon_type" id="coupon_type" class="form-control form-control-lg">
-				<option value="percentage" <?php echo (getPostMeta($post_id, 'coupon_type') == 'percentage') ? 'selected' : ''; ?>>Percentage</option>
-				<option value="flatDiscount" <?php echo (getPostMeta($post_id, 'coupon_type') == 'flatDiscount') ? 'selected' : ''; ?>>Flat Discount</option>
-			</select>
-			<span class="md-line"></span>
-		</div>
-		<div class="col-md-6">
-			<label class="col-form-label" for="discount_amount">Coupon Amount</label><br>
-			<input type="text" name="discount_amount" id="discount_amount" class="form-control form-control-lg" placeholder="Sale start Date" value="<?php echo getPostMeta($post_id, 'discount_amount') ?>">
-			<span class="md-line"></span>
-		</div>
-	</div>
-<?php
-	return ob_get_clean();
-}
-function insertUpdatecouponPostMetaBox($request, $post_id)
-{
-	updatePostMeta($post_id, 'coupon_type', $request->coupon_type);
-	updatePostMeta($post_id, 'discount_amount', $request->discount_amount);
+	for ($i = 1; $i <= 10; $i++) {
+		updatePostMeta($post_id, "step_{$i}_title", $request->{"step_{$i}_title"});
+		updatePostMeta($post_id, "step_{$i}_text", $request->{"step_{$i}_text"});
+		updatePostMeta($post_id, "step_{$i}_img", $request->{"step_{$i}_img"});
+	}
+	updatePostMeta($post_id, "page_title", $request->{"page_title"});
+	updatePostMeta($post_id, "page_text", $request->{"page_text"});
 }
 
 
@@ -1663,22 +1566,26 @@ function hasSubChild($menus)
 
 /*Get all products*/
 
-function getProducts() {
+function getProducts()
+{
 	return Product::with('variations')->paginate(pagination());
 }
-function getProductCategories() {
+function getProductCategories()
+{
 	return Category::whereHas('products')->limit(10)->get();
 }
 
-function generateUniqueSlug($name, $id = null) {
-    $slug = Str::slug($name);
-    $count = Product::where('slug', 'LIKE', "{$slug}%")->when($id, function ($query) use ($id) {
-        return $query->where('id', '!=', $id); // Ignore current product if updating
-    })->count();
+function generateUniqueSlug($name, $id = null)
+{
+	$slug = Str::slug($name);
+	$count = Product::where('slug', 'LIKE', "{$slug}%")->when($id, function ($query) use ($id) {
+		return $query->where('id', '!=', $id); // Ignore current product if updating
+	})->count();
 
-    return $count ? "{$slug}-" . ($count + 1) : $slug;
+	return $count ? "{$slug}-" . ($count + 1) : $slug;
 }
-function getProductSortBy() {
+function getProductSortBy()
+{
 	return [
 		'featured' => 'Featured',
 		'best-selling' => 'Best selling',
@@ -1690,130 +1597,140 @@ function getProductSortBy() {
 		'created-descending' => 'Date, new to old'
 	];
 }
-function getProductPrice($product) {
-    if ($product->type == "simple") {
-        // Check if the sale price is valid and within the sale period
-        if (
-            $product->sale_price > 0 &&
-            $product->sale_price < $product->main_price &&
-            isSaleActive($product->sale_start_date, $product->sale_end_date)
-        ) {
-            return $product->sale_price;
-        } else {
-            return $product->main_price;
-        }
-    } else {
-        return getVariableProductPrice($product);
-    }
+function getProductPrice($product)
+{
+	if ($product->type == "simple") {
+		// Check if the sale price is valid and within the sale period
+		if (
+			$product->sale_price > 0 &&
+			$product->sale_price < $product->main_price &&
+			isSaleActive($product->sale_start_date, $product->sale_end_date)
+		) {
+			return $product->sale_price;
+		} else {
+			return $product->main_price;
+		}
+	} else {
+		return getVariableProductPrice($product);
+	}
 }
 
-function getProductDisplayPrice($product, $productSetting) {
-	$currency = (isset($productSetting['currency'])?$productSetting['currency']:'$');
-    if ($product->type == "simple") {
-        if (
-            $product->sale_price > 0 &&
-            $product->sale_price < $product->main_price &&
-            isSaleActive($product->sale_start_date, $product->sale_end_date)
-        ) {
-            return "<del>{$currency} {$product->main_price}</del> <strong>{$currency} {$product->sale_price}</strong>";
-        } else {
-            return "<strong>{$currency} {$product->main_price}</strong>";
-        }
-    } else {
-        return getVariableProductDisplayPrice($product, $currency);
-    }
+function getProductDisplayPrice($product, $productSetting)
+{
+	$currency = (isset($productSetting['currency']) ? $productSetting['currency'] : '$');
+	if ($product->type == "simple") {
+		if (
+			$product->sale_price > 0 &&
+			$product->sale_price < $product->main_price &&
+			isSaleActive($product->sale_start_date, $product->sale_end_date)
+		) {
+			return "<del>{$currency} {$product->main_price}</del> <strong>{$currency} {$product->sale_price}</strong>";
+		} else {
+			return "<strong>{$currency} {$product->main_price}</strong>";
+		}
+	} else {
+		return getVariableProductDisplayPrice($product, $currency);
+	}
 }
 
 // Get min & max price from variations
-function getVariableProductPrice($product) {
-    $minPrice = $product->variations()->min('sale_price') ?? $product->variations()->min('main_price');
-    $maxPrice = $product->variations()->max('main_price');
+function getVariableProductPrice($product)
+{
+	$minPrice = $product->variations()->min('sale_price') ?? $product->variations()->min('main_price');
+	$maxPrice = $product->variations()->max('main_price');
 
-    if ($minPrice == $maxPrice) {
-        return number_format($minPrice, 2);
-    }
-    return number_format($maxPrice, 2);
+	if ($minPrice == $maxPrice) {
+		return number_format($minPrice, 2);
+	}
+	return number_format($maxPrice, 2);
 }
 
 // Display formatted variable product price
-function getVariableProductDisplayPrice($product, $currency) {
-    $minPrice = $product->variations()->min('sale_price') ?? $product->variations()->min('main_price');
-    $maxPrice = $product->variations()->max('main_price');
+function getVariableProductDisplayPrice($product, $currency)
+{
+	$minPrice = $product->variations()->min('sale_price') ?? $product->variations()->min('main_price');
+	$maxPrice = $product->variations()->max('main_price');
 
-    if ($minPrice == $maxPrice) {
-        return "<span class='price'>".$currency. " " . number_format($minPrice, 2) . "</span>";
-    }
-    if ($minPrice > 0) {
-    	return "<span class='price'>".$currency. " " . number_format($minPrice, 2) . " - ".$currency. " " . number_format($maxPrice, 2) . "</span>";
-    }
-    return "<span class='price'>".$currency. " " . number_format($maxPrice, 2) . "</span>";
+	if ($minPrice == $maxPrice) {
+		return "<span class='price'>" . $currency . " " . number_format($minPrice, 2) . "</span>";
+	}
+	if ($minPrice > 0) {
+		return "<span class='price'>" . $currency . " " . number_format($minPrice, 2) . " - " . $currency . " " . number_format($maxPrice, 2) . "</span>";
+	}
+	return "<span class='price'>" . $currency . " " . number_format($maxPrice, 2) . "</span>";
 }
 
 // Display formatted variable product price
-function getVariationDisplayPrice($variation, $currency) {
-    $minPrice = $variation->sale_price;
-    $maxPrice = $variation->main_price;
+function getVariationDisplayPrice($variation, $currency)
+{
+	$minPrice = $variation->sale_price;
+	$maxPrice = $variation->main_price;
 
-    if ($minPrice == $maxPrice) {
-        return "<span class='price'>".$currency. " " . number_format($minPrice, 2) . "</span>";
-    }
-    if ($minPrice > 0 &&
-            isSaleActive($variation->sale_start_date, $variation->sale_end_date)) {
-    	return "<del>".$currency. " " . number_format($maxPrice, 2) . " </del><strong> ".$currency. " " . number_format($minPrice, 2) . "</strong>";
-    }
-    return "<span class='price'>".$currency. " " . number_format($maxPrice, 2) . "</span>";
+	if ($minPrice == $maxPrice) {
+		return "<span class='price'>" . $currency . " " . number_format($minPrice, 2) . "</span>";
+	}
+	if (
+		$minPrice > 0 &&
+		isSaleActive($variation->sale_start_date, $variation->sale_end_date)
+	) {
+		return "<del>" . $currency . " " . number_format($maxPrice, 2) . " </del><strong> " . $currency . " " . number_format($minPrice, 2) . "</strong>";
+	}
+	return "<span class='price'>" . $currency . " " . number_format($maxPrice, 2) . "</span>";
 }
 
 // Display formatted variable product price
-function getVariationPrice($variation) {
-    $minPrice = $variation->sale_price;
-    $maxPrice = $variation->main_price;
+function getVariationPrice($variation)
+{
+	$minPrice = $variation->sale_price;
+	$maxPrice = $variation->main_price;
 
-    if ($minPrice == $maxPrice) {
-        return $minPrice;
-    }
-    if ($minPrice > 0 && isSaleActive($variation->sale_start_date, $variation->sale_end_date)) {
-    	return $minPrice;
-    }
-    return $maxPrice;
+	if ($minPrice == $maxPrice) {
+		return $minPrice;
+	}
+	if ($minPrice > 0 && isSaleActive($variation->sale_start_date, $variation->sale_end_date)) {
+		return $minPrice;
+	}
+	return $maxPrice;
 }
 
 // Helper function to check if the sale is active
-function isSaleActive($start_date, $end_date) {
-    $currentDate = date('Y-m-d');
-    
-    return (!$start_date || $currentDate >= $start_date) && 
-           (!$end_date || $currentDate <= $end_date);
+function isSaleActive($start_date, $end_date)
+{
+	$currentDate = date('Y-m-d');
+
+	return (!$start_date || $currentDate >= $start_date) &&
+		(!$end_date || $currentDate <= $end_date);
 }
-function getCurrencyList() {
+function getCurrencyList()
+{
 	return [
-	    '$'  => 'USD',
-	    '€'  => 'EUR',
-	    '£'  => 'GBP',
-	    '₹'  => 'INR',
-	    'A$' => 'AUD',
-	    'C$' => 'CAD',
-	    'CHF' => 'CHF',
-	    '¥'  => 'CNY/JPY', // Note: JPY also uses ¥
-	    '₽'  => 'RUB',
-	    'R$' => 'BRL',
-	    'R'  => 'ZAR',
-	    'Mex$' => 'MXN',
-	    '₩'  => 'KRW',
-	    'S$' => 'SGD',
-	    'NZ$' => 'NZD',
-	    'HK$' => 'HKD',
-	    '₺'  => 'TRY',
-	    'د.إ' => 'AED',
-	    'ر.س' => 'SAR',
-	    '฿'  => 'THB',
-	    'Rp' => 'IDR',
-	    'RM' => 'MYR',
-	    '₱'  => 'PHP',
-	    '₫'  => 'VND',
-	    'E£' => 'EGP',
-	    '₦'  => 'NGN',
-	    '₨'  => 'PKR',
-	    '৳'  => 'BDT',
+		'$'  => 'USD',
+		'€'  => 'EUR',
+		'£'  => 'GBP',
+		'₹'  => 'INR',
+		'A$' => 'AUD',
+		'C$' => 'CAD',
+		'CHF' => 'CHF',
+		'¥'  => 'CNY/JPY', // Note: JPY also uses ¥
+		'₽'  => 'RUB',
+		'R$' => 'BRL',
+		'R'  => 'ZAR',
+		'Mex$' => 'MXN',
+		'₩'  => 'KRW',
+		'S$' => 'SGD',
+		'NZ$' => 'NZD',
+		'HK$' => 'HKD',
+		'₺'  => 'TRY',
+		'د.إ' => 'AED',
+		'ر.س' => 'SAR',
+		'฿'  => 'THB',
+		'Rp' => 'IDR',
+		'RM' => 'MYR',
+		'₱'  => 'PHP',
+		'₫'  => 'VND',
+		'E£' => 'EGP',
+		'₦'  => 'NGN',
+		'₨'  => 'PKR',
+		'৳'  => 'BDT',
 	];
 }

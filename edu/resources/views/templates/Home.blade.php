@@ -100,7 +100,8 @@
                 <div class="owl-carousel active_course">
                     <div class="single_course">
                         <div class="course_head">
-                            <img class="img-fluid" src="img/courses/c1.jpg" alt="" />
+                            <img class="img-fluid" src="{{ publicPath('/themeAssets/img/courses/c1.jpg') }}"
+                                alt="" />
                         </div>
                         <div class="course_content">
                             <h4 class="mb-3">
@@ -120,7 +121,8 @@
 
                     <div class="single_course">
                         <div class="course_head">
-                            <img class="img-fluid" src="img/courses/c1.jpg" alt="" />
+                            <img class="img-fluid" src="{{ publicPath('/themeAssets/img/courses/c1.jpg') }}"
+                                alt="" />
                         </div>
                         <div class="course_content">
                             <h4 class="mb-3">
@@ -141,7 +143,8 @@
 
                     <div class="single_course">
                         <div class="course_head">
-                            <img class="img-fluid" src="img/courses/c1.jpg" alt="" />
+                            <img class="img-fluid" src="{{ publicPath('/themeAssets/img/courses/c1.jpg') }}"
+                                alt="" />
                         </div>
                         <div class="course_content">
                             <h4 class="mb-3">
@@ -162,7 +165,8 @@
 
                     <div class="single_course">
                         <div class="course_head">
-                            <img class="img-fluid" src="img/courses/c1.jpg" alt="" />
+                            <img class="img-fluid" src="{{ publicPath('/themeAssets/img/courses/c1.jpg') }}"
+                                alt="" />
                         </div>
                         <div class="course_content">
                             <h4 class="mb-3">
@@ -184,7 +188,8 @@
 
                     <div class="single_course">
                         <div class="course_head">
-                            <img class="img-fluid" src="img/courses/c1.jpg" alt="" />
+                            <img class="img-fluid" src="{{ publicPath('/themeAssets/img/courses/c1.jpg') }}"
+                                alt="" />
                         </div>
                         <div class="course_content">
                             <h4 class="mb-3">
@@ -233,23 +238,9 @@
             </div>
             <div class="col-lg-4 offset-lg-1">
                 <div class="register_form">
-                    <h3>Courses for Free</h3>
-                    <p>It is high time for learning</p>
-                    <form class="form_area" id="myForm" action="mail.html" method="post">
-                        <div class="row">
-                            <div class="col-lg-12 form_group">
-                                <input name="name" placeholder="Your Name" required="" type="text" />
-                                <input name="name" placeholder="Your Phone Number" required=""
-                                    type="tel" />
-                                <input name="email" placeholder="Your Email Address"
-                                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required=""
-                                    type="email" />
-                            </div>
-                            <div class="col-lg-12 text-center">
-                                <button class="primary-btn">Submit</button>
-                            </div>
-                        </div>
-                    </form>
+                    <h3>Explore Tours</h3>
+                    <p>It is high time for Educational Tours</p>
+                    <a href="#" class="primary-btn ml-sm-3 ml-0">View</a>
                 </div>
             </div>
         </div>
@@ -273,7 +264,8 @@
         <div class="row justify-content-center d-flex align-items-center">
             <div class="col-lg-3 col-md-6 col-sm-12 single-trainer">
                 <div class="thumb d-flex justify-content-sm-center">
-                    <img class="img-fluid" src="img/trainer/t1.jpg" alt="" />
+                    <img class="img-fluid" src="{{ publicPath('/themeAssets/img/trainer/t1.jpg') }}"
+                        alt="" />
                 </div>
                 <div class="meta-text text-sm-center">
                     <h4>Dubai Tour</h4>
@@ -283,7 +275,8 @@
 
             <div class="col-lg-3 col-md-6 col-sm-12 single-trainer">
                 <div class="thumb d-flex justify-content-sm-center">
-                    <img class="img-fluid" src="img/trainer/t2.jpg" alt="" />
+                    <img class="img-fluid" src="{{ publicPath('/themeAssets/img/trainer/t2.jpg') }}"
+                        alt="" />
                 </div>
                 <div class="meta-text text-sm-center">
                     <h4>David Cameron</h4>
@@ -305,7 +298,8 @@
 
             <div class="col-lg-3 col-md-6 col-sm-12 single-trainer">
                 <div class="thumb d-flex justify-content-sm-center">
-                    <img class="img-fluid" src="img/trainer/t3.jpg" alt="" />
+                    <img class="img-fluid" src="{{ publicPath('/themeAssets/img/trainer/t3.jpg') }}"
+                        alt="" />
                 </div>
                 <div class="meta-text text-sm-center">
                     <h4>Jain Redmel</h4>
@@ -327,7 +321,8 @@
 
             <div class="col-lg-3 col-md-6 col-sm-12 single-trainer">
                 <div class="thumb d-flex justify-content-sm-center">
-                    <img class="img-fluid" src="img/trainer/t4.jpg" alt="" />
+                    <img class="img-fluid" src="{{ publicPath('/themeAssets/img/trainer/t4.jpg') }}"
+                        alt="" />
                 </div>
                 <div class="meta-text text-sm-center">
                     <h4>Nathan Macken</h4>
@@ -368,7 +363,7 @@
             <div class="col-lg-6 col-md-6">
                 <div class="single_event position-relative">
                     <div class="event_thumb">
-                        <img src="img/event/e1.jpg" alt="" />
+                        <img src="{{ publicPath('/themeAssets/img/event/e1.jpg') }}" alt="" />
                     </div>
                     <div class="event_details">
                         <div class="d-flex mb-4">
@@ -394,7 +389,7 @@
             <div class="col-lg-6 col-md-6">
                 <div class="single_event position-relative">
                     <div class="event_thumb">
-                        <img src="img/event/e2.jpg" alt="" />
+                        <img src="{{ publicPath('/themeAssets/img/event/e2.jpg') }}" alt="" />
                     </div>
                     <div class="event_details">
                         <div class="d-flex mb-4">
@@ -421,7 +416,7 @@
             <div class="col-lg-12">
                 <div class="text-center pt-lg-5 pt-3">
                     <a href="#" class="event-link">
-                        View All Event <img src="img/next.png" alt="" />
+                        View All Event <img src="{{ publicPath('/themeAssets/img/next.png') }}" alt="" />
                     </a>
                 </div>
             </div>
@@ -449,7 +444,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t1.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t1.jpg') }}" alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">
@@ -466,7 +461,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t2.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t2.jpg') }}" alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">
@@ -483,7 +478,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t1.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t1.jpg') }}" alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">
@@ -500,7 +495,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t2.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t2.jpg') }}" alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">
@@ -517,7 +512,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t1.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t1.jpg') }}" alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">
@@ -534,7 +529,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t2.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t2.jpg') }}" alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">

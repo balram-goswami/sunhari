@@ -26,9 +26,7 @@ class LoginController extends Controller
 
     public function index()
     {
-        $view = "Templates.Login";
-
-        return view('Front', compact('view'));
+         return view('Auth.Login');
     }
 
     /**

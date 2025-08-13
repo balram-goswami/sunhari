@@ -8,12 +8,12 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>{{ isset($setting['meta_title']) ? $setting['meta_title'] : 'Sunhari' }}</title>
+    <title>{{ isset($setting['meta_title']) ? $setting['meta_title'] : 'Dashboard' }}</title>
 
-    <meta name="keyword" content="{{ isset($setting['meta_keyword']) ? $setting['meta_keyword'] : 'Sunhari' }}" />
+    <meta name="keyword" content="{{ isset($setting['meta_keyword']) ? $setting['meta_keyword'] : 'Dashboard' }}" />
 
     <meta name="description"
-        content="{{ isset($setting['meta_description']) ? $setting['meta_description'] : 'Sunhari' }}" />
+        content="{{ isset($setting['meta_description']) ? $setting['meta_description'] : 'Dashboard' }}" />
 
     <!-- Favicon -->
     @if (isset($setting['headerfavicon']) && $setting['headerfavicon'])
@@ -38,7 +38,7 @@
                         @if (isset($setting['headerlogo']) && $setting['headerlogo'])
                             <img src="<?php echo asset($setting['headerlogo']); ?>" style="max-width: 110px;" alt class="h-auto" />
                         @else
-                            <span>Sunhari </span>
+                            <span>Dashboard </span>
                         @endif
                     </a>
 

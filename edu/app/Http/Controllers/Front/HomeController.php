@@ -81,9 +81,8 @@ class HomeController extends Controller
         ['url' => '', 'title' => $post->post_title]
       ]
     ];
-    $products = Product::get()->all();
     
-    return view('Front', compact('view', 'post', 'breadcrumbs', 'products'));
+    return view('Front', compact('view', 'post', 'breadcrumbs'));
   }
 
   public function singlePost($post_type, $page)
