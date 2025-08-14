@@ -158,9 +158,23 @@ function themeFieldArray()
                 ],
                 [
                     'title' =>'Number',
-                    'id' => 'number',
+                    'id' => 'number1',
                     'type' => 'text',
                     'placeholder' =>'Contact Number',
+                    'default' => '',
+                ],
+                [
+                    'title' =>'Number',
+                    'id' => 'number2',
+                    'type' => 'text',
+                    'placeholder' =>'Other Number',
+                    'default' => '',
+                ],
+                [
+                    'title' =>'Timing',
+                    'id' => 'timing',
+                    'type' => 'text',
+                    'placeholder' =>'Office Timming',
                     'default' => '',
                 ],
                 [
@@ -186,16 +200,7 @@ function themeFieldArray()
                 ]
             ]
         ],
-        [
-            'key' => 'contact_us',
-            'title' => 'Contact Us Page',
-            'icon'=>'<i class="fa fa-cog" aria-hidden="true"></i>',
-            'fields' => 
-            [
-                
-                
-            ]
-        ],
+        
         [
             'key' => 'product',
             'title' => 'Product',

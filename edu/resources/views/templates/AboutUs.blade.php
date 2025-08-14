@@ -7,8 +7,8 @@
                     <div class="banner_content text-center">
                         <h2>About Us</h2>
                         <div class="page_link">
-                            <a href="index.html">Home</a>
-                            <a href="about-us.html">About Us</a>
+                            <a href="{{ route('homePage')}}">Home</a>
+                            <a href="">About Us</a>
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
         <div class="row h_blog_item">
             <div class="col-lg-6">
                 <div class="h_blog_img">
-                    <img class="img-fluid" src="img/about.png" alt="" />
+                    <img class="img-fluid" src="{{ publicPath('/themeAssets/img/about.png') }}" alt="" />
                 </div>
             </div>
             <div class="col-lg-6">
@@ -98,7 +98,7 @@
         <div class="row h_blog_item">
             <div class="col-lg-6">
                 <div class="h_blog_img">
-                    <img class="img-fluid" src="img/about.png" alt="" />
+                    <img class="img-fluid" src="{{ publicPath('/themeAssets/img/about.png') }}" alt="" />
                 </div>
             </div>
             <div class="col-lg-6">
@@ -166,7 +166,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t1.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t1.jpg') }}  " alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">
@@ -183,7 +183,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t2.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t2.jpg') }}  " alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">
@@ -200,7 +200,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t1.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t1.jpg') }}  " alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">
@@ -217,7 +217,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t2.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t2.jpg') }}  " alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">
@@ -234,7 +234,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t1.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t1.jpg') }}  " alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">
@@ -251,7 +251,7 @@
                 <div class="testi_item">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <img src="img/testimonials/t2.jpg" alt="" />
+                            <img src="{{ publicPath('/themeAssets/img/testimonials/t2.jpg') }}  " alt="" />
                         </div>
                         <div class="col-lg-8">
                             <div class="testi_text">

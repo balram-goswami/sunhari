@@ -6,6 +6,5 @@
 <script src="{{ publicPath('/themeAssets/js/owl-carousel-thumb.min.js') }}"></script>
 <script src="{{ publicPath('/themeAssets/js/jquery.ajaxchimp.min.js') }}"></script>
 <script src="{{ publicPath('/themeAssets/js/mail-script.js') }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="{{ publicPath('/themeAssets/js/gmaps.min.js') }}"></script>
 <script src="{{ publicPath('/themeAssets/js/theme.js') }}"></script>

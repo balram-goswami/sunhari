@@ -145,7 +145,7 @@
                     <div class="banner_content text-center">
                         <h2>{{ $post['extraFields']['page_title'] ?? 'Title' }}</h2>
                         <div class="page_link">
-                            <a href="index.html">{{ $post['extraFields']['page_text'] ?? 'Text' }}</a>
+                            <a href="{{ route('homePage') }}">{{ $post['extraFields']['page_text'] ?? 'Text' }}</a>
                         </div>
                     </div>
                 </div>

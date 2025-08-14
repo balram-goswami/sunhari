@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="icon" href="{{ publicPath($headerOption['headerfavicon'] ?? 'img/favicon.png') }}" type="image/png" />
+    <link rel="icon" href="{{ publicPath($headerOption['headerfavicon'] ?? '/themeAssets/img/favicon.png') }}" type="image/png" />
     <title>{{ $headerOption['meta_title'] }}</title>
 
     <link rel="stylesheet" href="{{ publicPath('/themeAssets/css/bootstrap.css') }}" />
