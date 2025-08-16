@@ -137,7 +137,7 @@ function themeFieldArray()
         
         [
             'key' => 'footer',
-            'title' => 'Footer',
+            'title' => 'Footer/Contact Details',
             'icon'=>'<i class="fa fa-cog" aria-hidden="true"></i>',
             'fields' => 
             [
@@ -186,16 +186,7 @@ function themeFieldArray()
                 ]
             ]
         ],
-        [
-            'key' => 'contact_us',
-            'title' => 'Contact Us Page',
-            'icon'=>'<i class="fa fa-cog" aria-hidden="true"></i>',
-            'fields' => 
-            [
-                
-                
-            ]
-        ],
+      
         [
             'key' => 'product',
             'title' => 'Product',
