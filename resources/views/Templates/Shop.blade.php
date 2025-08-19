@@ -6,7 +6,7 @@
                     data-src="{{ publicPath('themeAssets//images/cat-women2.jpg') }}"
                     src="{{ publicPath('themeAssets//images/cat-women2.jpg') }}" alt="Women" title="Women" /></div>
             <div class="collection-hero__title-wrapper">
-                <h1 class="collection-hero__title page-width">Shop Grid 3 Column</h1>
+                <h1 class="collection-hero__title page-width">{{$post->post_title}}</h1>
             </div>
         </div>
     </div>
