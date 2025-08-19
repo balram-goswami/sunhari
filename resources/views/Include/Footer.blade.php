@@ -1,4 +1,3 @@
-<!--Footer-->
 @php
     $details = getThemeOptions('footer');
 @endphp
@@ -117,7 +116,7 @@
                     </div>
                 </div>
             </div>
-            <!--End Footer Links-->
+            
             <hr>
             <div class="footer-bottom">
                 <div class="row">

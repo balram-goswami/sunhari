@@ -6,7 +6,7 @@ $details = getThemeOptions('footer');
     <div class="container-fluid">
         <div class="row">
             <div class="col-10 col-sm-8 col-md-5 col-lg-4">
-                {{-- <div class="currency-picker">
+                <!-- <div class="currency-picker">
                     <span class="selected-currency">USD</span>
                     <ul id="currencies">
                         <li data-currency="INR" class="">INR</li>
@@ -24,7 +24,7 @@ $details = getThemeOptions('footer');
                         <li class="">German</li>
                         <li class="">French</li>
                     </ul>
-                </div> --}}
+                </div>  -->
                 <p class="phone-no"><i class="anm anm-phone-s"></i><a href="tel:{{ $details['number'] ?? '' }}"> {{ $details['number'] ?? ''}}</a></p>
             </div>
             <div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
