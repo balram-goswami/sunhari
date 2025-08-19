@@ -85,39 +85,6 @@
 
 <script>
     jQuery(document).ready(function($) {
-        $('#astralogerDatatable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('users.astrologer') }}",
-            columns: [{
-                    data: 'photo',
-                    name: 'photo'
-                },
-                {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'email',
-                    name: 'email'
-                },
-                {
-                    data: 'role',
-                    name: 'role'
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                    searchable: false
-                },
-            ]
-        });
-    });
-</script>
-
-<script>
-    jQuery(document).ready(function($) {
         $('#customersDatatable').DataTable({
             processing: true,
             serverSide: true,

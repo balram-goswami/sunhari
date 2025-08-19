@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Enquiry extends Model
 {
     use HasFactory;
+    
+    protected $fillable = ['query_from', 'name', 'email', 'mobile', 'subject', 'location', 'message'];
 }

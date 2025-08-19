@@ -20,12 +20,9 @@ class CreateEnquiriesTable extends Migration
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
             $table->string('city')->nullable();
-            $table->string('course')->nullable();
+            $table->string('subject')->nullable();
             $table->string('location')->nullable();
             $table->string('message')->nullable();
-            $table->string('investment_type')->nullable();
-            $table->string('business_type')->nullable();
-            $table->string('how_you_know')->nullable();
             $table->timestamps();
         });
     }

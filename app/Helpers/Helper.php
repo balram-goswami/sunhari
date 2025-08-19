@@ -16,10 +16,10 @@ use App\Models\{
 	VisitorData,
 	Category,
 	Product,
-    ProductCategory,
-    ProductGallery,
-    ProductTag,
-    ProductVariation
+	ProductCategory,
+	ProductGallery,
+	ProductTag,
+	ProductVariation
 };
 
 function appName()
@@ -657,7 +657,7 @@ function getMenus()
 		],
 		[
 			'title' => 'Requests and Queries',
-			'route' => 'apply-now.index',
+			'route' => 'feedbacks.index',
 			'icon' => 'tf-icons bx bx-envelope',
 			'role' => [User::ADMIN],
 		],
@@ -778,32 +778,41 @@ function postTypes()
 				],
 			]
 		],
-		'why_choose_us' => [
+
+		'tagManager' => [
 			'area' => 'Admin',
-			'title' => 'Why Choose US',
-			'icon' => 'tf-icons bx bxl-blogger',
-			'slug' => 'why-choose-us',
+			'title' => 'Tag Manager',
+			'icon' => 'tf-icons bx bx-purchase-tag-alt',
+			'slug' => 'tagManager',
+			'role' => [User::ADMIN],
+			'showMenu' => false,
+			'multilng' => false,
+			'support' => [],
+			'templateOption' => [
+				'PostDefault' => 'Default Template',
+			],
+			'taxonomy' => []
+		],
+
+		'slider' => [
+			'area' => 'Admin',
+			'title' => 'Sliders',
+			'icon' => 'tf-icons bx bx-slideshow',
+			'slug' => 'slider',
 			'role' => [User::ADMIN],
 			'showMenu' => true,
 			'multilng' => false,
-			'support' => ['excerpt', 'seo', 'featured', 'content'],
+			'support' => ['featured',],
 			'templateOption' => [
-				'SingleWhyChooseUs' => 'Default Template',
+				'PostDefault' => 'Default Template',
 			],
-			'taxonomy' => [
-				'why_choose_us_category' => [
-					'title' => 'Category',
-					'slug' => 'why-choose-us-category',
-					'showMenu' => true,
-					'showPost' => [],
-					'hasVariations' => false
-				]
-			]
+			'taxonomy' => []
 		],
+
 		'coupon' => [
 			'area' => 'Admin',
 			'title' => 'Coupon',
-			'icon' => 'tf-icons bx bxl-blogger',
+			'icon' => 'tf-icons bx bx-purchase-tag',
 			'slug' => 'coupon',
 			'role' => [User::ADMIN],
 			'showMenu' => false,
@@ -1033,7 +1042,9 @@ function addPostMetaBox($post_type,  $post_id)
 		case 'coupon':
 			$postBoxHtml = postcouponMetaBox($post_id);
 			break;
-
+		case 'slider':
+			$postBoxHtml = postsliderMetaBox($post_id);
+			break;
 		default:
 			$postBoxHtml = '';
 			break;
@@ -1060,6 +1071,9 @@ function insertUpdatePostMetaBox($post_type, $request, $post_id)
 			break;
 		case 'coupon':
 			insertUpdatecouponPostMetaBox($request, $post_id);
+			break;
+		case 'slider':
+			insertUpdatesliderPostMetaBox($request, $post_id);
 			break;
 		default:
 			return;
@@ -1234,6 +1248,62 @@ function insertUpdatecouponPostMetaBox($request, $post_id)
 {
 	updatePostMeta($post_id, 'coupon_type', $request->coupon_type);
 	updatePostMeta($post_id, 'discount_amount', $request->discount_amount);
+}
+
+/** Slider area */
+function postsliderMetaBox($post_id)
+{
+	ob_start();
+	$links = getPostsByPostType('page', 0, 'new',  true, true);
+	?>
+
+	<br>
+	<div class="col-md-11">
+		<label class="col-form-label" for="slider_text">Slider Text</label><br>
+		<input type="text" name="slider_text" id="slider_text" class="form-control form-control-lg" 
+			placeholder="Sale start Date" 
+			value="<?php echo htmlspecialchars(getPostMeta($post_id, 'slider_text')) ?>">
+		<span class="md-line"></span>
+	</div>
+
+	<br>
+	<div class="input-group row">
+		<h5 style="color: red;">Button Details</h5>
+
+		<div class="col-md-6">
+			<label class="col-form-label" for="button_text">Button Text</label><br>
+			<input type="text" name="button_text" id="button_text" class="form-control form-control-lg" 
+				placeholder="Sale Button Text" 
+				value="<?php echo htmlspecialchars(getPostMeta($post_id, 'button_text')) ?>">
+			<span class="md-line"></span>
+		</div>
+
+		<div class="col-md-6">
+			<label class="col-form-label" for="button_link">Button Link</label><br>
+			<select name="button_link" id="button_link" class="form-control form-control-lg">
+				<?php 
+				$current_link = getPostMeta($post_id, 'button_link');
+				foreach ($links as $link) { 
+					$selected = ($current_link == $link->post_name) ? 'selected' : '';
+				?>
+					<option value="<?php echo $link->post_name ?>" <?php echo $selected; ?>>
+						<?php echo $link->post_title ?>
+					</option>
+				<?php } ?>
+			</select>
+			<span class="md-line"></span>
+		</div>
+	</div>
+
+	<?php
+	return ob_get_clean();
+}
+
+function insertUpdatesliderPostMetaBox($request, $post_id)
+{
+	updatePostMeta($post_id, 'slider_text', $request->slider_text ?? '');
+	updatePostMeta($post_id, 'button_text', $request->button_text ?? '');
+	updatePostMeta($post_id, 'button_link', $request->button_link ?? '');
 }
 
 
@@ -1663,22 +1733,26 @@ function hasSubChild($menus)
 
 /*Get all products*/
 
-function getProducts() {
+function getProducts()
+{
 	return Product::with('variations')->paginate(pagination());
 }
-function getProductCategories() {
+function getProductCategories()
+{
 	return Category::whereHas('products')->limit(10)->get();
 }
 
-function generateUniqueSlug($name, $id = null) {
-    $slug = Str::slug($name);
-    $count = Product::where('slug', 'LIKE', "{$slug}%")->when($id, function ($query) use ($id) {
-        return $query->where('id', '!=', $id); // Ignore current product if updating
-    })->count();
+function generateUniqueSlug($name, $id = null)
+{
+	$slug = Str::slug($name);
+	$count = Product::where('slug', 'LIKE', "{$slug}%")->when($id, function ($query) use ($id) {
+		return $query->where('id', '!=', $id); // Ignore current product if updating
+	})->count();
 
-    return $count ? "{$slug}-" . ($count + 1) : $slug;
+	return $count ? "{$slug}-" . ($count + 1) : $slug;
 }
-function getProductSortBy() {
+function getProductSortBy()
+{
 	return [
 		'featured' => 'Featured',
 		'best-selling' => 'Best selling',
@@ -1690,130 +1764,140 @@ function getProductSortBy() {
 		'created-descending' => 'Date, new to old'
 	];
 }
-function getProductPrice($product) {
-    if ($product->type == "simple") {
-        // Check if the sale price is valid and within the sale period
-        if (
-            $product->sale_price > 0 &&
-            $product->sale_price < $product->main_price &&
-            isSaleActive($product->sale_start_date, $product->sale_end_date)
-        ) {
-            return $product->sale_price;
-        } else {
-            return $product->main_price;
-        }
-    } else {
-        return getVariableProductPrice($product);
-    }
+function getProductPrice($product)
+{
+	if ($product->type == "simple") {
+		// Check if the sale price is valid and within the sale period
+		if (
+			$product->sale_price > 0 &&
+			$product->sale_price < $product->main_price &&
+			isSaleActive($product->sale_start_date, $product->sale_end_date)
+		) {
+			return $product->sale_price;
+		} else {
+			return $product->main_price;
+		}
+	} else {
+		return getVariableProductPrice($product);
+	}
 }
 
-function getProductDisplayPrice($product, $productSetting) {
-	$currency = (isset($productSetting['currency'])?$productSetting['currency']:'$');
-    if ($product->type == "simple") {
-        if (
-            $product->sale_price > 0 &&
-            $product->sale_price < $product->main_price &&
-            isSaleActive($product->sale_start_date, $product->sale_end_date)
-        ) {
-            return "<del>{$currency} {$product->main_price}</del> <strong>{$currency} {$product->sale_price}</strong>";
-        } else {
-            return "<strong>{$currency} {$product->main_price}</strong>";
-        }
-    } else {
-        return getVariableProductDisplayPrice($product, $currency);
-    }
+function getProductDisplayPrice($product, $productSetting)
+{
+	$currency = (isset($productSetting['currency']) ? $productSetting['currency'] : '$');
+	if ($product->type == "simple") {
+		if (
+			$product->sale_price > 0 &&
+			$product->sale_price < $product->main_price &&
+			isSaleActive($product->sale_start_date, $product->sale_end_date)
+		) {
+			return "<del>{$currency} {$product->main_price}</del> <strong>{$currency} {$product->sale_price}</strong>";
+		} else {
+			return "<strong>{$currency} {$product->main_price}</strong>";
+		}
+	} else {
+		return getVariableProductDisplayPrice($product, $currency);
+	}
 }
 
 // Get min & max price from variations
-function getVariableProductPrice($product) {
-    $minPrice = $product->variations()->min('sale_price') ?? $product->variations()->min('main_price');
-    $maxPrice = $product->variations()->max('main_price');
+function getVariableProductPrice($product)
+{
+	$minPrice = $product->variations()->min('sale_price') ?? $product->variations()->min('main_price');
+	$maxPrice = $product->variations()->max('main_price');
 
-    if ($minPrice == $maxPrice) {
-        return number_format($minPrice, 2);
-    }
-    return number_format($maxPrice, 2);
+	if ($minPrice == $maxPrice) {
+		return number_format($minPrice, 2);
+	}
+	return number_format($maxPrice, 2);
 }
 
 // Display formatted variable product price
-function getVariableProductDisplayPrice($product, $currency) {
-    $minPrice = $product->variations()->min('sale_price') ?? $product->variations()->min('main_price');
-    $maxPrice = $product->variations()->max('main_price');
+function getVariableProductDisplayPrice($product, $currency)
+{
+	$minPrice = $product->variations()->min('sale_price') ?? $product->variations()->min('main_price');
+	$maxPrice = $product->variations()->max('main_price');
 
-    if ($minPrice == $maxPrice) {
-        return "<span class='price'>".$currency. " " . number_format($minPrice, 2) . "</span>";
-    }
-    if ($minPrice > 0) {
-    	return "<span class='price'>".$currency. " " . number_format($minPrice, 2) . " - ".$currency. " " . number_format($maxPrice, 2) . "</span>";
-    }
-    return "<span class='price'>".$currency. " " . number_format($maxPrice, 2) . "</span>";
+	if ($minPrice == $maxPrice) {
+		return "<span class='price'>" . $currency . " " . number_format($minPrice, 2) . "</span>";
+	}
+	if ($minPrice > 0) {
+		return "<span class='price'>" . $currency . " " . number_format($minPrice, 2) . " - " . $currency . " " . number_format($maxPrice, 2) . "</span>";
+	}
+	return "<span class='price'>" . $currency . " " . number_format($maxPrice, 2) . "</span>";
 }
 
 // Display formatted variable product price
-function getVariationDisplayPrice($variation, $currency) {
-    $minPrice = $variation->sale_price;
-    $maxPrice = $variation->main_price;
+function getVariationDisplayPrice($variation, $currency)
+{
+	$minPrice = $variation->sale_price;
+	$maxPrice = $variation->main_price;
 
-    if ($minPrice == $maxPrice) {
-        return "<span class='price'>".$currency. " " . number_format($minPrice, 2) . "</span>";
-    }
-    if ($minPrice > 0 &&
-            isSaleActive($variation->sale_start_date, $variation->sale_end_date)) {
-    	return "<del>".$currency. " " . number_format($maxPrice, 2) . " </del><strong> ".$currency. " " . number_format($minPrice, 2) . "</strong>";
-    }
-    return "<span class='price'>".$currency. " " . number_format($maxPrice, 2) . "</span>";
+	if ($minPrice == $maxPrice) {
+		return "<span class='price'>" . $currency . " " . number_format($minPrice, 2) . "</span>";
+	}
+	if (
+		$minPrice > 0 &&
+		isSaleActive($variation->sale_start_date, $variation->sale_end_date)
+	) {
+		return "<del>" . $currency . " " . number_format($maxPrice, 2) . " </del><strong> " . $currency . " " . number_format($minPrice, 2) . "</strong>";
+	}
+	return "<span class='price'>" . $currency . " " . number_format($maxPrice, 2) . "</span>";
 }
 
 // Display formatted variable product price
-function getVariationPrice($variation) {
-    $minPrice = $variation->sale_price;
-    $maxPrice = $variation->main_price;
+function getVariationPrice($variation)
+{
+	$minPrice = $variation->sale_price;
+	$maxPrice = $variation->main_price;
 
-    if ($minPrice == $maxPrice) {
-        return $minPrice;
-    }
-    if ($minPrice > 0 && isSaleActive($variation->sale_start_date, $variation->sale_end_date)) {
-    	return $minPrice;
-    }
-    return $maxPrice;
+	if ($minPrice == $maxPrice) {
+		return $minPrice;
+	}
+	if ($minPrice > 0 && isSaleActive($variation->sale_start_date, $variation->sale_end_date)) {
+		return $minPrice;
+	}
+	return $maxPrice;
 }
 
 // Helper function to check if the sale is active
-function isSaleActive($start_date, $end_date) {
-    $currentDate = date('Y-m-d');
-    
-    return (!$start_date || $currentDate >= $start_date) && 
-           (!$end_date || $currentDate <= $end_date);
+function isSaleActive($start_date, $end_date)
+{
+	$currentDate = date('Y-m-d');
+
+	return (!$start_date || $currentDate >= $start_date) &&
+		(!$end_date || $currentDate <= $end_date);
 }
-function getCurrencyList() {
+function getCurrencyList()
+{
 	return [
-	    '$'  => 'USD',
-	    '€'  => 'EUR',
-	    '£'  => 'GBP',
-	    '₹'  => 'INR',
-	    'A$' => 'AUD',
-	    'C$' => 'CAD',
-	    'CHF' => 'CHF',
-	    '¥'  => 'CNY/JPY', // Note: JPY also uses ¥
-	    '₽'  => 'RUB',
-	    'R$' => 'BRL',
-	    'R'  => 'ZAR',
-	    'Mex$' => 'MXN',
-	    '₩'  => 'KRW',
-	    'S$' => 'SGD',
-	    'NZ$' => 'NZD',
-	    'HK$' => 'HKD',
-	    '₺'  => 'TRY',
-	    'د.إ' => 'AED',
-	    'ر.س' => 'SAR',
-	    '฿'  => 'THB',
-	    'Rp' => 'IDR',
-	    'RM' => 'MYR',
-	    '₱'  => 'PHP',
-	    '₫'  => 'VND',
-	    'E£' => 'EGP',
-	    '₦'  => 'NGN',
-	    '₨'  => 'PKR',
-	    '৳'  => 'BDT',
+		'$'  => 'USD',
+		'€'  => 'EUR',
+		'£'  => 'GBP',
+		'₹'  => 'INR',
+		'A$' => 'AUD',
+		'C$' => 'CAD',
+		'CHF' => 'CHF',
+		'¥'  => 'CNY/JPY', // Note: JPY also uses ¥
+		'₽'  => 'RUB',
+		'R$' => 'BRL',
+		'R'  => 'ZAR',
+		'Mex$' => 'MXN',
+		'₩'  => 'KRW',
+		'S$' => 'SGD',
+		'NZ$' => 'NZD',
+		'HK$' => 'HKD',
+		'₺'  => 'TRY',
+		'د.إ' => 'AED',
+		'ر.س' => 'SAR',
+		'฿'  => 'THB',
+		'Rp' => 'IDR',
+		'RM' => 'MYR',
+		'₱'  => 'PHP',
+		'₫'  => 'VND',
+		'E£' => 'EGP',
+		'₦'  => 'NGN',
+		'₨'  => 'PKR',
+		'৳'  => 'BDT',
 	];
 }

@@ -1,6 +1,6 @@
 <!--Footer-->
 @php
-$details = getThemeOptions('footer');
+    $details = getThemeOptions('footer');
 @endphp
 <footer id="footer">
     <div class="newsletter-section">
@@ -12,56 +12,60 @@ $details = getThemeOptions('footer');
                             <div class="section-header text-center">
                                 <label class="h2"><span>sign up for </span>newsletter</label>
                             </div>
-                            <form action="#" method="post">
+                            <form action="{{ route('subscribe.form') }}" method="POST" id="subscribeForm">
+                                @csrf
                                 <div class="input-group">
-                                    <input type="email" class="input-group__field newsletter__input" name="EMAIL"
-                                        value="" placeholder="Email address" required="">
+                                    <input type="email" class="input-group__field newsletter__input" name="email"
+                                        placeholder="Email address" required>
                                     <span class="input-group__btn">
                                         <button type="submit" class="btn newsletter__submit" name="commit"
-                                            id="Subscribe"><span
-                                                class="newsletter__submit-text--large">Subscribe</span></button>
+                                            id="Subscribe">
+                                            <span class="newsletter__submit-text--large">Subscribe</span>
+                                        </button>
                                     </span>
                                 </div>
                             </form>
+                            <div id="subscribeMessage"></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 d-flex justify-content-end align-items-center">
                     <div class="footer-social">
                         <ul class="list--inline site-footer__social-icons social-icons">
-                            <li><a class="social-icons__link" href="#" target="_blank"
-                                    title="Belle Multipurpose Bootstrap 4 Template on Facebook"><i
-                                        class="icon icon-facebook"></i></a></li>
-                            <li><a class="social-icons__link" href="#" target="_blank"
-                                    title="Belle Multipurpose Bootstrap 4 Template on Twitter"><i
-                                        class="icon icon-twitter"></i> <span
-                                        class="icon__fallback-text">Twitter</span></a></li>
-                            <li><a class="social-icons__link" href="#" target="_blank"
-                                    title="Belle Multipurpose Bootstrap 4 Template on Pinterest"><i
-                                        class="icon icon-pinterest"></i> <span
-                                        class="icon__fallback-text">Pinterest</span></a></li>
-                            <li><a class="social-icons__link" href="#" target="_blank"
-                                    title="Belle Multipurpose Bootstrap 4 Template on Instagram"><i
-                                        class="icon icon-instagram"></i> <span
-                                        class="icon__fallback-text">Instagram</span></a></li>
-                            <li><a class="social-icons__link" href="#" target="_blank"
-                                    title="Belle Multipurpose Bootstrap 4 Template on Tumblr"><i
-                                        class="icon icon-tumblr-alt"></i> <span
-                                        class="icon__fallback-text">Tumblr</span></a></li>
-                            <li><a class="social-icons__link" href="#" target="_blank"
-                                    title="Belle Multipurpose Bootstrap 4 Template on YouTube"><i
-                                        class="icon icon-youtube"></i> <span
-                                        class="icon__fallback-text">YouTube</span></a></li>
-                            <li><a class="social-icons__link" href="#" target="_blank"
-                                    title="Belle Multipurpose Bootstrap 4 Template on Vimeo"><i
-                                        class="icon icon-vimeo-alt"></i> <span
-                                        class="icon__fallback-text">Vimeo</span></a></li>
+                            @if (isset($details['facebook']))
+                                <li>
+                                    <a class="social-icons__link" href="{{ $details['facebook'] }}" target="_blank"
+                                        title=""><i class="icon icon-facebook"></i><span
+                                            class="icon__fallback-text">Facebook</span></a>
+                                </li>
+                            @endif
+                            @if (isset($details['whatsApp']))
+                                <li><a class="social-icons__link" href="{{ $details['whatsApp'] }}" target="_blank"
+                                        title=""><i class="icon icon-twitter"></i> <span
+                                            class="icon__fallback-text">Whats App Link</span></a></li>
+                            @endif
+                            @if (isset($details['instagram']))
+                                <li><a class="social-icons__link" href="{{ $details['instagram'] }}" target="_blank"
+                                        title=""><i class="icon icon-instagram"></i> <span
+                                            class="icon__fallback-text">Instagram</span></a></li>
+                            @endif
+                            @if (isset($details['youtube']))
+                                <li><a class="social-icons__link" href="{{ $details['youtube'] }}" target="_blank"
+                                        title=""><i class="icon icon-youtube"></i> <span
+                                            class="icon__fallback-text">YouTube</span></a></li>
+                            @endif
+                            @if (isset($details['snapChat']))
+                                <li><a class="social-icons__link" href="{{ $details['snapChat'] }}" target="_blank"
+                                        title=""><i class="icon icon-snapchat"></i> <span
+                                            class="icon__fallback-text">snapChat</span></a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="site-footer">
         <div class="container">
             <!--Footer Links-->
@@ -101,13 +105,13 @@ $details = getThemeOptions('footer');
                         <h4 class="h4">Contact Us</h4>
                         <ul class="addressFooter">
                             <li><i class="icon anm anm-map-marker-al"></i>
-                                <p>{{ $details['address'] ?? ''}}</p>
+                                <p>{{ $details['address'] ?? '' }}</p>
                             </li>
                             <li class="phone"><i class="icon anm anm-phone-s"></i>
                                 <p>{{ $details['number'] ?? '' }}</p>
                             </li>
                             <li class="email"><i class="icon anm anm-envelope-l"></i>
-                                <p>{{ $details['email'] ?? ''}}</p>
+                                <p>{{ $details['email'] ?? '' }}</p>
                             </li>
                         </ul>
                     </div>
@@ -120,7 +124,7 @@ $details = getThemeOptions('footer');
                     <!--Footer Copyright-->
                     <div
                         class="col-12 col-sm-12 col-md-6 col-lg-6 order-1 order-md-0 order-lg-0 order-sm-1 copyright text-sm-center text-md-left text-lg-left">
-                        <span></span> <a href="{{ route('homePage')}}">Sunhari -  All right reserved</a>
+                        <span></span> <a href="{{ route('homePage') }}">{{ $details['footercopyright'] }}</a>
                     </div>
                     <!--End Footer Copyright-->
                     <!--Footer Payment Icon-->
@@ -141,56 +145,38 @@ $details = getThemeOptions('footer');
         </div>
     </div>
 </footer>
-<!--End Footer-->
-<!--Scoll Top-->
+
 <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
-<!--End Scoll Top-->
+<script>
+    document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+        e.preventDefault();
 
+        let formData = new FormData(this);
 
-<!-- Newsletter Popup -->
-<div class="newsletter-wrap" id="popup-container">
-    <div id="popup-window">
-        <a class="btn closepopup"><i class="icon icon anm anm-times-l"></i></a>
-        <!-- Modal content-->
-        <div class="display-table splash-bg">
-            <div class="display-table-cell width40"><img
-                    src="{ publicPath('themeAssets/images/newsletter-img.jpg') }}" alt="Join Our Mailing List"
-                    title="Join Our Mailing List" /> </div>
-            <div class="display-table-cell width60 text-center">
-                <div class="newsletter-left">
-                    <h2>Join Our Mailing List</h2>
-                    <p>Sign Up for our exclusive email list and be the first to know about new products and
-                        special offers</p>
-                    <form action="#" method="post">
-                        <div class="input-group">
-                            <input type="email" class="input-group__field newsletter__input" name="EMAIL"
-                                value="" placeholder="Email address" required="">
-                            <span class="input-group__btn">
-                                <button type="submit" class="btn newsletter__submit" name="commit"
-                                    id="subscribeBtn"> <span class="newsletter__submit-text--large">Subscribe</span>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                    <ul class="list--inline site-footer__social-icons social-icons">
-                        <li><a class="social-icons__link" href="#" title="Facebook"><i
-                                    class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                        <li><a class="social-icons__link" href="#" title="Twitter"><i class="fa fa-twitter"
-                                    aria-hidden="true"></i></a></li>
-                        <li><a class="social-icons__link" href="#" title="Pinterest"><i
-                                    class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                        <li><a class="social-icons__link" href="#" title="Instagram"><i
-                                    class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        <li><a class="social-icons__link" href="#" title="YouTube"><i class="fa fa-youtube"
-                                    aria-hidden="true"></i></a></li>
-                        <li><a class="social-icons__link" href="#" title="Vimeo"><i class="fa fa-vimeo"
-                                    aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        fetch(this.action, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json'
+                },
+                body: formData
+            })
+            .then(response => response.json().then(data => ({
+                status: response.status,
+                body: data
+            })))
+            .then(obj => {
+                const messageDiv = document.getElementById('subscribeMessage');
+                if (obj.status === 200) {
+                    messageDiv.innerHTML = `<p style="color:green;">${obj.body.message}</p>`;
+                    this.reset();
+                } else {
+                    messageDiv.innerHTML = `<p style="color:red;">${obj.body.message}</p>`;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
 
 @include('Include.Script')
 </div>

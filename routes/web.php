@@ -37,6 +37,8 @@ Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.u
 Route::post('checkout/process', [OrderController::class, 'doOrder'])->name('checkout.process');
 Route::get('thank-you', [OrderController::class, 'thankyou'])->name('thank.you');
 
+Route::get('form-save', [HomeController::class, 'formsave'])->name('form.save');
+
 Route::get('getStates', [CommonController::class, 'getStates'])->name('get-states');
 Route::get('getCities', [CommonController::class, 'getCities'])->name('get-cities');
 
@@ -48,8 +50,6 @@ Route::get('term/{category}/{slug}', [HomeController::class, 'terms'])->name('po
 // Additional Route
 Route::post('contactus-form', [HomeController::class, 'contactUsForm'])->name('contactus.form');
 Route::post('subscribe-form', [HomeController::class, 'subscribeForm'])->name('subscribe.form');
-Route::post('feedback-form', [HomeController::class, 'feedbackForm'])->name('feedback.form');
-
 
 // Payment Routs
 Route::get('/payment', function () {
