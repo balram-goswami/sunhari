@@ -1499,90 +1499,90 @@ function registerNavBarMenu()
 }
 function createUpdateSiteMapXML($postUrl)
 {
+    $postUrl = str_replace('in//', 'in/', $postUrl);
+    $sitemapPath = base_path('public/sitemap.xml');
 
-	$postUrl = str_replace('in//', 'in/', $postUrl);
-	$hasUrl = false;
-	$sitemapPath = base_path('public\sitemap.xml');
-	$sitemapPath = str_replace('public/', '', $sitemapPath);
-	$xmlObjects = simplexml_load_file($sitemapPath);
+    if (!file_exists($sitemapPath)) {
+        // create a new sitemap if it doesn't exist
+        $xmlContent = '<?xml version="1.0" encoding="UTF-8"?>
+        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>';
+        file_put_contents($sitemapPath, $xmlContent);
+    }
 
-	$xmlRow = '';
-	$existRow = false;
-	if (!empty($xmlObjects->url)) {
-		foreach ($xmlObjects->url as $xmlObject) {
-			if ($xmlObject->loc == $postUrl) {
-				$existRow = true;
-				$xmlRow .= '<url>
-						<loc>' . $xmlObject->loc . '</loc>
-					  <lastmod>' . date('c', time()) . '</lastmod>
-					  <priority>' . $xmlObject->priority . '</priority>
-				   </url>';
-			} else {
-				$xmlRow .= '<url>
-					  <loc>' . $xmlObject->loc . '</loc>
-					  <lastmod>' . $xmlObject->lastmod . '</lastmod>
-					  <priority>' . $xmlObject->priority . '</priority>
-				   </url>';
-			}
-		}
-	}
-	if ($existRow == false) {
-		$xmlRow .= '<url>
-					  <loc>' . $postUrl . '</loc>
-					  <lastmod>' . date('c', time()) . '</lastmod>
-					  <priority>0.5</priority>
-				   </url>';
-	}
+    $xmlObjects = simplexml_load_file($sitemapPath);
 
-	$xmlContent = '<?xml version="1.0" encoding="UTF-8"?>
-		<urlset
-			  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-					http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-		<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-		   ' . $xmlRow . '
-		</urlset>';
-	$dom = new \DOMDocument;
-	$dom->preserveWhiteSpace = FALSE;
-	$dom->loadXML($xmlContent);
-	$dom->save($sitemapPath);
+    $xmlRow = '';
+    $existRow = false;
+    if (!empty($xmlObjects->url)) {
+        foreach ($xmlObjects->url as $xmlObject) {
+            if ((string)$xmlObject->loc == $postUrl) {
+                $existRow = true;
+                $xmlRow .= '<url>
+                    <loc>' . $xmlObject->loc . '</loc>
+                    <lastmod>' . date('c', time()) . '</lastmod>
+                    <priority>' . $xmlObject->priority . '</priority>
+                </url>';
+            } else {
+                $xmlRow .= '<url>
+                    <loc>' . $xmlObject->loc . '</loc>
+                    <lastmod>' . $xmlObject->lastmod . '</lastmod>
+                    <priority>' . $xmlObject->priority . '</priority>
+                </url>';
+            }
+        }
+    }
+    if (!$existRow) {
+        $xmlRow .= '<url>
+            <loc>' . $postUrl . '</loc>
+            <lastmod>' . date('c', time()) . '</lastmod>
+            <priority>0.5</priority>
+        </url>';
+    }
+
+    $xmlContent = '<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        ' . $xmlRow . '
+    </urlset>';
+
+    $dom = new \DOMDocument;
+    $dom->preserveWhiteSpace = FALSE;
+    $dom->loadXML($xmlContent);
+    $dom->save($sitemapPath);
 }
+
 function deleteSiteMapXML($postUrl)
 {
-	$postUrl = str_replace('in//', 'in/', $postUrl);
-	$hasUrl = false;
-	$sitemapPath = base_path('public\sitemap.xml');
-	$sitemapPath = str_replace('public/', '', $sitemapPath);
-	$xmlObjects = simplexml_load_file($sitemapPath);
+    $postUrl = str_replace('in//', 'in/', $postUrl);
+    $sitemapPath = base_path('public/sitemap.xml');
 
-	$xmlRow = '';
-	if (!empty($xmlObjects->url)) {
-		foreach ($xmlObjects->url as $xmlObject) {
-			if ($xmlObject->loc != $postUrl) {
-				$xmlRow .= '<url>
-						<loc>' . $xmlObject->loc . '</loc>
-					  <lastmod>' . $xmlObject->lastmod . '</lastmod>
-					  <priority>' . $xmlObject->priority . '</priority>
-				   </url>';
-			}
-		}
-	}
+    if (!file_exists($sitemapPath)) {
+        return; // no sitemap to modify
+    }
 
-	$xmlContent = '<?xml version="1.0" encoding="UTF-8"?>
-		<urlset
-			  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-					http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-		<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-		   ' . $xmlRow . '
-		</urlset>';
+    $xmlObjects = simplexml_load_file($sitemapPath);
 
-	$dom = new \DOMDocument;
-	$dom->preserveWhiteSpace = FALSE;
-	$dom->loadXML($xmlContent);
-	$dom->save($sitemapPath);
+    $xmlRow = '';
+    if (!empty($xmlObjects->url)) {
+        foreach ($xmlObjects->url as $xmlObject) {
+            if ((string)$xmlObject->loc != $postUrl) {
+                $xmlRow .= '<url>
+                    <loc>' . $xmlObject->loc . '</loc>
+                    <lastmod>' . $xmlObject->lastmod . '</lastmod>
+                    <priority>' . $xmlObject->priority . '</priority>
+                </url>';
+            }
+        }
+    }
+
+    $xmlContent = '<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        ' . $xmlRow . '
+    </urlset>';
+
+    $dom = new \DOMDocument;
+    $dom->preserveWhiteSpace = FALSE;
+    $dom->loadXML($xmlContent);
+    $dom->save($sitemapPath);
 }
 
 function getChildMenus($menufor)
