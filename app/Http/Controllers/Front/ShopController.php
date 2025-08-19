@@ -36,6 +36,8 @@ class ShopController extends Controller
             'similarProducts.galleries'
         ])->where('slug', $slug)->first();
 
+        $allproduct = Product::with('galleries')->get();
+
         $regularPrice = $product->main_price;
         $salePrice = $product->sale_price ?? $product->main_price;
         $youSave = $regularPrice - $salePrice;
@@ -59,7 +61,8 @@ class ShopController extends Controller
             'regularPrice',
             'salePrice',
             'youSave',
-            'discountPercent'
+            'discountPercent',
+            'allproduct'
         ));
     }
 }

@@ -14,7 +14,6 @@ use App\Models\{
   Enquiry,
   Links,
   Subscibers,
-  ApplyNow,
   Countries,
   User,
   UserDetails,
@@ -152,67 +151,67 @@ class HomeController extends Controller
 
   private function mailAddress()
   {
-    // $emailTo = 'leads.tpsc@gmail.com';
-    // $email_cc = 'dm.tpsc@gmail.com';
-
-    $emailTo = 'balram.theedunetwork@gmail.com';
-    $email_cc = 'balram.theedunetwork@gmail.com';
-
-    return ['to' => $emailTo, 'cc' => $email_cc];
+    return [
+      'to' => 'admin@example.com',
+      'cc' => ['support@example.com'],
+    ];
   }
 
   public function contactUsForm(Request $request)
   {
-    $validator = Validator::make(
-      $request->all(),
-      [
-        'query_from' => 'nullable|string',
-        'fake_entry' => 'nullable',
-        'name' => 'nullable|string',
-        'email' => 'nullable|email',
-        'c_code' => 'nullable|numeric',
-        'mobile' => 'nullable|numeric',
-        'location' => 'nullable|string',
-        'message' => 'nullable|string',
+    // Validation
+    $validator = Validator::make($request->all(), [
+      'query_from' => 'nullable|string',
+      'fake_entry' => 'nullable',
+      'name' => 'required|string|max:255',
+      'email' => 'required|email|max:255',
+      'mobile' => 'nullable|numeric',
+      'subject' => 'required|string|max:255',
+      'message' => 'required|string',
+    ]);
 
-        'otp' => 'nullable|string',
-      ]
-    );
-
+    // Honeypot bot protection
     if ($request->filled('fake_entry')) {
       return response()->json(['message' => 'You are a Robot'], 422);
     }
 
     if ($validator->fails()) {
-      return Response()->json(['message' => $validator->getMessageBag()->first()], 422);
-    }
-    $latestUsers = ApplyNow::latest()->take(10)->get();
-    $existingUser = $latestUsers->where('email', $request->email)->first();
-
-    if ($existingUser) {
-      return response()->json(['message' => 'User Already Exists within last 10 entries'], 422);
+      return response()->json(['message' => $validator->errors()->first()], 422);
     }
 
-    $form  = new ApplyNow;
-    $form->query_from = $request->query_from;
-    $form->name = $request->name;
-    $form->email = $request->email;
-    $form->c_code = $request->c_code;
-    $form->mobile = $request->mobile;
-    $form->location = $request->location;
-    $form->message = $request->message;
-    $form->save();
+    try {
+      // Optional: check for duplicate email
+      $existingUser = Enquiry::where('email', $request->email)->latest()->first();
+      if ($existingUser) {
+        return response()->json(['message' => 'This email has already submitted a request'], 422);
+      }
 
-    $emailSubject = 'New Request Recive from ' . $request->query_from . '';
-    $allMailFields = $form;
-    $emailBody = view('Email.OtherMail', compact('allMailFields'));
+      // Save to database
+      $form = new Enquiry();
+      $form->query_from = $request->query_from;
+      $form->name = $request->name;
+      $form->email = $request->email;
+      $form->mobile = $request->mobile;
+      $form->location = $request->subject;
+      $form->message = $request->message;
+      $form->save();
 
-    $emails = $this->mailAddress();
-    $emailTo = $emails['to'];
-    $email_cc = $emails['cc'];
-    $this->communicationService->mail($emailTo, $emailSubject, $emailBody, [], '', '', $email_cc);
-    Session::flash('success', "Mail Sent.");
-    return Response()->json(['message' => 'Thanks for connecting', 'action' => 'success'], 200);
+      // Send email
+      // $emails = $this->mailAddress();
+      // $emailTo = $emails['to'];
+      // $email_cc = $emails['cc'];
+
+      // $emailSubject = 'New Subscriber Request Received';
+      // $emailBody = 'Please note there is a new subscription request.';
+
+      // $this->communicationService->mail($emailTo, $emailSubject, $emailBody, [], '', '', $email_cc);
+
+      // Session::flash('success', "Mail Sent.");
+      return response()->json(['message' => 'Thanks for connecting', 'action' => 'success'], 200);
+    } catch (\Exception $e) {
+      \Log::error('Contact Form Error: ' . $e->getMessage());
+      return response()->json(['message' => 'An error occurred. Please try again later.'], 500);
+    }
   }
 
   public function subscribeForm(Request $request)
@@ -245,21 +244,37 @@ class HomeController extends Controller
       $form->save();
 
       // Prepare and send email
-      $emails = $this->mailAddress();
-      $emailTo = $emails['to'];
-      $email_cc = $emails['cc'];
+      // $emails = $this->mailAddress();
+      // $emailTo = $emails['to'];
+      // $email_cc = $emails['cc'];
 
-      $emailSubject = 'New Subscriber Request Received';
-      $emailBody = 'Please note there is a new subscription request.';
+      // $emailSubject = 'New Subscriber Request Received';
+      // $emailBody = 'Please note there is a new subscription request.';
 
-      $this->communicationService->mail($emailTo, $emailSubject, $emailBody, [], '', '', $email_cc);
+      // $this->communicationService->mail($emailTo, $emailSubject, $emailBody, [], '', '', $email_cc);
 
-      Session::flash('success', "Mail Sent.");
+      // Session::flash('success', "Mail Sent.");
+
       return response()->json(['message' => 'Thank you for subscribing!'], 200);
     } catch (\Exception $e) {
       // Log the error if necessary for debugging
       \Log::error('Subscription Error: ' . $e->getMessage());
       return response()->json(['message' => 'An error occurred while processing your request. Please try again later.'], 500);
     }
+  }
+
+  public function formsave()
+  {
+    $breadcrumbs = [
+      'title' => 'Thank you',
+      'metaTitle' => 'Thank you',
+      'metaDescription' => 'Thank you',
+      'metaKeyword' => 'Thank you',
+      'links' => [
+        ['url' => url('/'), 'title' => 'Home']
+      ]
+    ];
+    $view = 'Templates.FormSave';
+    return view('Front', compact('view', 'breadcrumbs'));
   }
 }

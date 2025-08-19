@@ -10,7 +10,6 @@
 <script src="{{ publicPath('/themeAssets/js/lazysizes.js') }}"></script>
 <script src="{{ publicPath('/themeAssets/js/main.js') }}"></script>
 
-
 <script>
     jQuery(document).ready(function() {
         jQuery('.closepopup').on('click', function() {

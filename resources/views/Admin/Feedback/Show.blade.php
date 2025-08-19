@@ -30,41 +30,14 @@
                                 <td><?php echo $feedback->mobile ?></td>
                               </tr>
                               <tr>
-                                <th>Overall Rating</th>
-                                <td><?php echo $feedback->overall_rating ?></td>
+                                <th>Subject</th>
+                                <td><?php echo $feedback->subject ?></td>
                               </tr>
                               <tr>
-                                <th>Recommend TPSC to friends/family?</th>
-                                <td><?php echo $feedback->recommend_service ?></td>
+                                <th>Message</th>
+                                <td><?php echo $feedback->message ?></td>
                               </tr>
-                              <tr>
-                                <th>Staff Name</th>
-                                <td><?php echo $feedback->staff_name ?></td>
-                              </tr>
-                              <tr>
-                                <th>Staff Comment</th>
-                                <td><?php echo $feedback->staff_comment ?></td>
-                              </tr>
-                              <tr>
-                                <th>Enhance Experience</th>
-                                <td><?php echo $feedback->enhance_experience ?></td>
-                              </tr>
-                              <tr>
-                                <th>Did our services meet your requirements?</th>
-                                <td><?php echo $feedback->service_requirement ?></td>
-                              </tr>
-                              <tr>
-                                <th>How could we have a better engagement with you?</th>
-                                <td><?php echo $feedback->feedback_suggestion ?></td>
-                              </tr>
-                              <tr>
-                                <th>happy for TPSC to use your feedback</th>
-                                <td><?php echo $feedback->market_activity ?></td>
-                              </tr>
-                              <tr>
-                                <th>Sent ON</th>
-                                <td><?php echo dateFormat($feedback->created_at) ?></td>
-                              </tr>
+                              
                             </tbody>                      
                           </table>
                         </div>

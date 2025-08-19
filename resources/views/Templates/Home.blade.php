@@ -10,7 +10,7 @@
                         <div class="slideshow__text-content bottom">
                             <div class="wrap-caption center">
                                 <h2 class="h1 mega-title slideshow__title">Shop Our New Collection</h2>
-                                <span class="mega-subtitle slideshow__subtitle">From Hight to low, classic or
+                                <span class="mega-subtitle slideshow__subtitle">From High to low, classic or
                                     modern. We have you covered</span>
                                 <span class="btn">Shop now</span>
                             </div>
@@ -122,12 +122,12 @@
                                             <!-- product price -->
                                             @if(!empty($items->sale_price) && $discountPercent > 0)
                                             <div class="product-price">
-                                                <span class="old-price">{{$regularPrice}}</span>
-                                                <span class="price">{{$salePrice}}</span>
+                                                <span class="old-price">₹ {{$regularPrice}}</span>
+                                                <span class="price"> ₹{{$salePrice}}</span>
                                             </div>
                                             @else
                                             <div class="product-price">
-                                                <span class="price">{{$salePrice}}</span>
+                                                <span class="price">₹ {{$salePrice}}</span>
                                             </div>
                                             @endif
 
@@ -312,10 +312,10 @@
                                 <!-- product price -->
                                 <div class="product-price">
                                     @if(!empty($items->sale_price) && $discountPercent > 0)
-                                    <span class="old-price">{{ $regularPrice }}</span>
-                                    <span class="price">{{ $salePrice }}</span>
+                                    <span class="old-price">₹ {{ $regularPrice }}</span>
+                                    <span class="price">₹ {{ $salePrice }}</span>
                                     @else
-                                    <span class="price">{{ $regularPrice }}</span>
+                                    <span class="price">₹ {{ $regularPrice }}</span>
                                     @endif
                                 </div>
                                 <!-- End product price -->

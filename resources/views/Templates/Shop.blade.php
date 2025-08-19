@@ -42,11 +42,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="lvl-1"><a href="#;" class="site-nav">Shoes</a></li>
-                                <li class="lvl-1"><a href="#;" class="site-nav">Accessories</a></li>
-                                <li class="lvl-1"><a href="#;" class="site-nav">Collections</a></li>
-                                <li class="lvl-1"><a href="#;" class="site-nav">Sale</a></li>
-                                <li class="lvl-1"><a href="#;" class="site-nav">Page</a></li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -118,188 +114,12 @@
                             <span class="swacth-btn khaki"></span>
                         </div>
                     </div>
-                    <!--End Color Swatches-->
-                    <!--Brand-->
-                    <div class="sidebar_widget filterBox filter-widget">
-                        <div class="widget-title">
-                            <h2>Brands</h2>
-                        </div>
-                        <ul>
-                            <li>
-                                <input type="checkbox" value="allen-vela" id="check1">
-                                <label for="check1"><span><span></span></span>Allen Vela</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" value="oxymat" id="check3">
-                                <label for="check3"><span><span></span></span>Oxymat</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" value="vanelas" id="check4">
-                                <label for="check4"><span><span></span></span>Vanelas</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" value="pagini" id="check5">
-                                <label for="check5"><span><span></span></span>Pagini</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" value="monark" id="check6">
-                                <label for="check6"><span><span></span></span>Monark</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--End Brand-->
-                    <!--Popular Products-->
-                    <div class="sidebar_widget">
-                        <div class="widget-title">
-                            <h2>Popular Products</h2>
-                        </div>
-                        <div class="widget-content">
-                            <div class="list list-sidebar-products">
-                                <div class="grid">
-                                    <div class="grid__item">
-                                        <div class="mini-list-item">
-                                            <div class="mini-view_image">
-                                                <a class="grid-view-item__link" href="#">
-                                                    <img class="grid-view-item__image"
-                                                        src="{{ publicPath('themeAssets//images/product-images/mini-product-img.jpg') }}"
-                                                        alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="details"> <a class="grid-view-item__title"
-                                                    href="#">Cena Skirt</a>
-                                                <div class="grid-view-item__meta"><span
-                                                        class="product-price__price"><span
-                                                            class="money">$173.60</span></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid__item">
-                                        <div class="mini-list-item">
-                                            <div class="mini-view_image"> <a class="grid-view-item__link"
-                                                    href="#"><img class="grid-view-item__image"
-                                                        src="{{ publicPath('themeAssets//images/product-images/mini-product-img1.jpg') }}"
-                                                        alt="" /></a> </div>
-                                            <div class="details"> <a class="grid-view-item__title"
-                                                    href="#">Block Button Up</a>
-                                                <div class="grid-view-item__meta"><span
-                                                        class="product-price__price"><span
-                                                            class="money">$378.00</span></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid__item">
-                                        <div class="mini-list-item">
-                                            <div class="mini-view_image"> <a class="grid-view-item__link"
-                                                    href="#"><img class="grid-view-item__image"
-                                                        src="{{ publicPath('themeAssets//images/product-images/mini-product-img2.jpg') }}"
-                                                        alt="" /></a> </div>
-                                            <div class="details"> <a class="grid-view-item__title"
-                                                    href="#">Balda Button Pant</a>
-                                                <div class="grid-view-item__meta"><span
-                                                        class="product-price__price"><span
-                                                            class="money">$278.60</span></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid__item">
-                                        <div class="mini-list-item">
-                                            <div class="mini-view_image"> <a class="grid-view-item__link"
-                                                    href="#"><img class="grid-view-item__image"
-                                                        src="{{ publicPath('themeAssets//images/product-images/mini-product-img3.jpg') }}"
-                                                        alt="" /></a> </div>
-                                            <div class="details"> <a class="grid-view-item__title"
-                                                    href="#">Border Dress in Black/Silver</a>
-                                                <div class="grid-view-item__meta"><span
-                                                        class="product-price__price"><span
-                                                            class="money">$228.00</span></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Popular Products-->
-                    <!--Banner-->
-                    <div class="sidebar_widget static-banner">
-                        <img src="{{ publicPath('themeAssets//images/side-banner-2.jpg') }}" alt="" />
-                    </div>
-                    <!--Banner-->
-                    <!--Information-->
-                    <div class="sidebar_widget">
-                        <div class="widget-title">
-                            <h2>Information</h2>
-                        </div>
-                        <div class="widget-content">
-                            <p>Use this text to share information about your brand with your customers. Describe a
-                                product, share announcements, or welcome customers to your store.</p>
-                        </div>
-                    </div>
-                    <!--end Information-->
-                    <!--Product Tags-->
-                    <div class="sidebar_widget">
-                        <div class="widget-title">
-                            <h2>Product Tags</h2>
-                        </div>
-                        <div class="widget-content">
-                            <ul class="product-tags">
-                                <li><a href="#" title="Show products matching tag $100 - $400">$100 - $400</a>
-                                </li>
-                                <li><a href="#" title="Show products matching tag $400 - $600">$400 - $600</a>
-                                </li>
-                                <li><a href="#" title="Show products matching tag $600 - $800">$600 - $800</a>
-                                </li>
-                                <li><a href="#" title="Show products matching tag Above $800">Above $800</a>
-                                </li>
-                                <li><a href="#" title="Show products matching tag Allen Vela">Allen Vela</a>
-                                </li>
-                                <li><a href="#" title="Show products matching tag Black">Black</a></li>
-                                <li><a href="#" title="Show products matching tag Blue">Blue</a></li>
-                                <li><a href="#" title="Show products matching tag Cantitate">Cantitate</a></li>
-                                <li><a href="#" title="Show products matching tag Famiza">Famiza</a></li>
-                                <li><a href="#" title="Show products matching tag Gray">Gray</a></li>
-                                <li><a href="#" title="Show products matching tag Green">Green</a></li>
-                                <li><a href="#" title="Show products matching tag Hot">Hot</a></li>
-                                <li><a href="#" title="Show products matching tag jean shop">jean shop</a></li>
-                                <li><a href="#" title="Show products matching tag jesse kamm">jesse kamm</a>
-                                </li>
-                                <li><a href="#" title="Show products matching tag L">L</a></li>
-                                <li><a href="#" title="Show products matching tag Lardini">Lardini</a></li>
-                                <li><a href="#" title="Show products matching tag lareida">lareida</a></li>
-                                <li><a href="#" title="Show products matching tag Lirisla">Lirisla</a></li>
-                                <li><a href="#" title="Show products matching tag M">M</a></li>
-                                <li><a href="#" title="Show products matching tag mini-dress">mini-dress</a>
-                                </li>
-                                <li><a href="#" title="Show products matching tag Monark">Monark</a></li>
-                                <li><a href="#" title="Show products matching tag Navy">Navy</a></li>
-                                <li><a href="#" title="Show products matching tag new">new</a></li>
-                                <li><a href="#" title="Show products matching tag new arrivals">new arrivals</a>
-                                </li>
-                                <li><a href="#" title="Show products matching tag Orange">Orange</a></li>
-                                <li><a href="#" title="Show products matching tag oxford">oxford</a></li>
-                                <li><a href="#" title="Show products matching tag Oxymat">Oxymat</a></li>
-                            </ul>
-                            <span class="btn btn--small btnview">View all</span>
-                        </div>
-                    </div>
-                    <!--end Product Tags-->
                 </div>
             </div>
-            <!--End Sidebar-->
-            <!--Main Content-->
+
             <div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
                 <div class="category-description">
-                    <h3>Category Description</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing.</p>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                        classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a
-                        Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin
-                        words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in
-                        classical literature, discovered the undoubtable source.</p>
+                    <h3>{!! $post->post_content !!}</h3>
                 </div>
                 <hr>
                 <div class="productList">

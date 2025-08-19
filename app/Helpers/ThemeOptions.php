@@ -129,9 +129,6 @@ function themeFieldArray()
                     'placeholder' =>'Button URL',
                     'default' => '',
                 ], 
-
-
-
             ]
         ],
         
@@ -177,6 +174,41 @@ function themeFieldArray()
                     'placeholder' =>'Address',
                     'default' => '',
                 ], 
+                [
+                    'title' =>'Facebook',
+                    'id' => 'facebook',
+                    'type' => 'text',
+                    'placeholder' =>'Facebook Link',
+                    'default' => '',
+                ],
+                [
+                    'title' =>'Instagram',
+                    'id' => 'instagram',
+                    'type' => 'text',
+                    'placeholder' =>'Instagram Link',
+                    'default' => '',
+                ],
+                [
+                    'title' =>'YouTube',
+                    'id' => 'youTube',
+                    'type' => 'text',
+                    'placeholder' =>'YouTube Link',
+                    'default' => '',
+                ],
+                [
+                    'title' =>'WhatsApp',
+                    'id' => 'whatsApp',
+                    'type' => 'text',
+                    'placeholder' =>'WhatsApp Link',
+                    'default' => '',
+                ],
+                [
+                    'title' =>'SnapChat',
+                    'id' => 'snapChat',
+                    'type' => 'text',
+                    'placeholder' =>'SnapChat Link',
+                    'default' => '',
+                ],
                 [
                     'title' =>'CopyRight',
                     'id' => 'footercopyright',
