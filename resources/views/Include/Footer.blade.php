@@ -1,6 +1,7 @@
 @php
     $details = getThemeOptions('footer');
 @endphp
+
 <footer id="footer">
     <div class="newsletter-section">
         <div class="container">
@@ -146,6 +147,7 @@
 </footer>
 
 <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+
 <script>
     document.getElementById('subscribeForm').addEventListener('submit', function(e) {
         e.preventDefault();

@@ -1,5 +1,5 @@
 @php
-$headerOption = getThemeOptions('header');
+    $headerOption = getThemeOptions('header');
 @endphp
 
 <!DOCTYPE html>
@@ -9,10 +9,12 @@ $headerOption = getThemeOptions('header');
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ $headerOption['meta_title'] ?? '' }}</title>
-    <meta name="description" content="{{ $headerOption['meta_description'] ?? ''}}">
+    <meta name="description" content="{{ $headerOption['meta_description'] ?? '' }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{ $headerOption['headerfavicon'] ?? 'public\assets\img\icons\3.png'}} " />
+    <link rel="shortcut icon" href="{{ $headerOption['headerfavicon'] ?? 'public\assets\img\icons\3.png' }} " />
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     @include('Include.Style')
 
 </head>
@@ -33,6 +35,5 @@ $headerOption = getThemeOptions('header');
                 <button type="button" class="search-trigger close-btn"><i class="anm anm-times-l"></i></button>
             </div>
         </div>
-       
+
         @include('Include.Menu')
-        

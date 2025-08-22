@@ -263,10 +263,12 @@ function getCurrentVisitor()
 	$visitorIp = request()->ip();
 	return VisitorData::where('ip_address', $visitorIp)->first();
 }
+
 function getUser($user_id)
 {
 	return DB::table('users')->where('user_id', $user_id)->select('*')->get()->first();
 }
+
 function createUuid($name = 'vendorP')
 {
 	return Uuid::generate(5, $name, Uuid::NS_DNS);

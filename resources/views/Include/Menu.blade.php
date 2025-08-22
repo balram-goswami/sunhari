@@ -35,7 +35,7 @@ $details = getThemeOptions('footer');
             <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
                 <span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
                 <ul class="customer-links list-inline">
-                   <li><a href="{{ route('login.index') }}">Login</a></li>
+                    <li><a href="{{ route('login.index') }}">Login</a></li>
                     <li><a href="register.html">Create Account</a></li>
                     <li><a href="wishlist.html">Wishlist</a></li>
                 </ul>
@@ -43,8 +43,7 @@ $details = getThemeOptions('footer');
         </div>
     </div>
 </div>
-<!--End Top Header-->
-<!--Header-->
+
 @if (request()->is('/'))
 <div class="header-wrap classicHeader animated d-flex" >
 @else
@@ -155,7 +154,7 @@ $details = getThemeOptions('footer');
                                     </div>
                                     <div class="priceRow">
                                         <div class="product-price">
-                                            <span class="money">$99.00</span>
+                                            <span class="money">99.00</span>
                                         </div>
                                     </div>
                                 </div>
@@ -164,7 +163,7 @@ $details = getThemeOptions('footer');
                         <div class="total">
                             <div class="total-in">
                                 <span class="label">Cart Subtotal:</span><span class="product-price"><span
-                                        class="money">$748.00</span></span>
+                                        class="money">748.00</span></span>
                             </div>
                             <div class="buttonSet text-center">
                                 <a href="cart.html" class="btn btn-secondary btn--small">View Cart</a>
@@ -172,7 +171,6 @@ $details = getThemeOptions('footer');
                             </div>
                         </div>
                     </div>
-                    <!--EndMinicart Popup-->
                 </div>
                 <div class="site-header__search">
                     <button type="button" class="search-trigger"><i class="icon anm anm-search-l"></i></button>

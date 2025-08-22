@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\{
     Product,
     ProductVariation,
-    SubVariation
+    SubVariation,
+    Cart
 };
-use Validator, Session;
+use Validator, DateTime, Config, Helpers, Hash, DB, Session, Auth, Redirect;
 use App\Services\{
     CommonService
 };
@@ -21,56 +22,71 @@ class CartController extends Controller
     {
         $this->commonService = $commonService;
     }
+
     public function addToCart(Request $request)
     {
         $product = Product::findOrFail($request->product_id);
         $variation = $request->variation_id ? ProductVariation::findOrFail($request->variation_id) : null;
 
-        $cart = Session::get('cart', []);
-
-        $itemId = $product->id . ($variation ? "-" . $variation->id : "");
-        if ($variation) {
-            $variationRaw = maybe_decode($variation->variation_raw);
-            $variationNames = [];
-            if ($variationRaw) {
-                foreach ($variationRaw as $key => $value) {
-                    $variationNames[] = SubVariation::where('id', $value)->select('name')->get()->pluck('name')->first();
-                }
-            }
-        }
-        if (isset($cart[$itemId])) {
-            $cart[$itemId]['quantity'] += $request->quantity;
+        if (Auth::check()) {
+            $user = getCurrentUser();
+            $visitor = null;
         } else {
-            $cart[$itemId] = [
-                'product_id' => $product->id,
-                'product_name' => $product->name,
-                'product_image' => asset($product->image),
-                'variation_id' => $variation ? $variation->id : null,
-                'variation_name' => $variation ? implode(' - ', $variationNames) : null,
-                'price' => $variation ? getVariationPrice($variation) : getProductPrice($product),
-                'quantity' => $request->quantity,
-            ];
+            $user = null;
+            $visitor = getCurrentVisitor();
         }
 
-        Session::put('cart', $cart);
-        Session::flash('success', 'Product add to cart');
-        if ($request->action == 'add_to_cart') {
-            return redirect()->back();
+        $query = Cart::where('post_id', $product->id)
+            ->when($variation, fn($q) => $q->where('variation_id', $variation->id));
+
+        if ($user) {
+            $query->where('user_id', $user->user_id);
+        } elseif ($visitor) {
+            $query->where('visitor_id', $visitor->id);
         }
-        return redirect()->route('cart.checkout');
+
+        $existingCart = $query->first();
+
+        if ($existingCart) {
+            $existingCart->quantity += $request->quantity;
+            $existingCart->save();
+        } else {
+            $saveCart = new Cart();
+            $saveCart->user_id      = $user ? $user->user_id : null;
+            $saveCart->visitor_id   = $visitor ? $visitor->id : null;
+            $saveCart->post_id      = $product->id;
+            $saveCart->quantity     = $request->quantity;
+            $saveCart->save();
+        }
+
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Product added to cart',
+                'cart_count' => Cart::when($user, fn($q) => $q->where('user_id', $user->id))
+                    ->when($visitor, fn($q) => $q->where('visitor_id', $visitor->id))
+                    ->count()
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Product added to cart');
     }
 
-    public function removeFromCart($itemId)
+    public function removeFromCart($itemId, Request $request)
     {
         $cart = Session::get('cart', []);
 
-        if (isset($cart[$itemId])) {
-            unset($cart[$itemId]);
-            Session::put('cart', $cart);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Product removed from cart',
+                'cart_count' => count($cart),
+                'cart' => $cart
+            ]);
         }
 
-        Session::flash('success', 'Product removed from cart');
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Product removed from cart');
     }
 
     public function updateCart(Request $request)
