@@ -13,7 +13,8 @@ use App\Http\Controllers\Admin\{
     FeedbackController,
     SubscribersController,
     ApplyNowController,
-    MenuController
+    MenuController,
+    VisitorController
 };
 
 use App\Http\Controllers\Admin\Ecommerce\{
@@ -95,6 +96,8 @@ Route::get('/taxonomy/configure/terms/{postType?}/{taxonomy?}', [TaxonomyControl
 Route::get('/menus', [MenuController::class, 'index'])->name('menus');
 Route::post('/add/menu', [MenuController::class, 'addMenuItems'])->name('add.menu');
 Route::get('/delete/menu', [MenuController::class, 'deleteMenuItems'])->name('delete.menu');
+
+Route::get('/visitor', [VisitorController::class, 'index'])->name('visitor');
 
 // Feedback
 Route::resource('feedbacks', FeedbackController::class);

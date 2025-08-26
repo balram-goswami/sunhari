@@ -64,7 +64,6 @@
                             @php
                                 $mainImage = $product->galleries->first()->image ?? $product->image;
                             @endphp
-
                             <div class="zoompro-wrap product-zoom-right pl-20">
                                 <div class="zoompro-span">
                                     <img id="mainProductImage" class="blur-up lazyload zoompro"
@@ -146,7 +145,15 @@
                         <div class="product-single__description rte">
                             <p>{{ $product->short_description }}</p>
                         </div>
-                        <div id="quantity_message">Hurry! Only <span class="items">4</span> left in stock.</div>
+                        @if ($product->stock > 0)
+                            <div id="quantity_message">
+                                Hurry! Only <span class="items">{{ $product->stock }}</span> left in stock.
+                            </div>
+                        @else
+                            <div id="quantity_message" class="text-danger">
+                                Out of Stock
+                            </div>
+                        @endif
                         <form method="post" action="http://annimexweb.com/cart/add" id="product_form_10508262282"
                             accept-charset="UTF-8" class="product-form product-form-product-template hidedropdown"
                             enctype="multipart/form-data">
@@ -205,26 +212,41 @@
                                 <div class="product-form__item--quantity">
                                     <div class="wrapQtyBtn">
                                         <div class="qtyField">
-                                            <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                    class="fa anm anm-minus-r" aria-hidden="true"></i></a>
+                                            <a class="qtyBtn minus" href="javascript:void(0);">
+                                                <i class="fa anm anm-minus-r" aria-hidden="true"></i>
+                                            </a>
                                             <input type="text" id="Quantity" name="quantity" value="1"
                                                 class="product-form__input qty">
-                                            <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                    class="fa anm anm-plus-r" aria-hidden="true"></i></a>
+                                            <a class="qtyBtn plus" href="javascript:void(0);">
+                                                <i class="fa anm anm-plus-r" aria-hidden="true"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-form__item--submit">
-                                    <button type="button" name="add" class="btn product-form__cart-submit">
-                                        <span>Add to cart</span>
-                                    </button>
-                                </div>
-                                <div class="shopify-payment-button" data-shopify="payment-button">
-                                    <button type="button"
-                                        class="shopify-payment-button__button shopify-payment-button__button--unbranded">Buy
-                                        it now</button>
-                                </div>
+
+                                @if ($product->stock >= 1)
+                                    <!-- In Stock → Show Add to Cart + Buy Now -->
+                                    <div class="product-form__item--submit">
+                                        <button type="button" name="add" class="btn product-form__cart-submit">
+                                            <span>Add to cart</span>
+                                        </button>
+                                    </div>
+                                    <div class="shopify-payment-button" data-shopify="payment-button">
+                                        <button type="button"
+                                            class="shopify-payment-button__button shopify-payment-button__button--unbranded">
+                                            Buy it now
+                                        </button>
+                                    </div>
+                                @else
+                                    <!-- Out of Stock → Show Coming Soon -->
+                                    <div class="product-form__item--submit">
+                                        <button type="button" class="btn btn-secondary" disabled>
+                                            <span>Coming Soon</span>
+                                        </button>
+                                    </div>
+                                @endif
                             </div>
+
                             <!-- End Product Action -->
                         </form>
                         <div class="display-table shareRow">
@@ -269,9 +291,10 @@
                             </div>
                         </div>
 
-                        <p id="freeShipMsg" class="freeShipMsg" data-price="{{$salePrice ?? $regularPrice}}">
+                        <p id="freeShipMsg" class="freeShipMsg" data-price="{{ $salePrice ?? $regularPrice }}">
                             <i class="fa fa-truck" aria-hidden="true"></i>
-                            GETTING CLOSER! ONLY <b class="freeShip"><span class="money">{{$salePrice ?? $regularPrice}}</span></b> AWAY FROM
+                            GETTING CLOSER! ONLY <b class="freeShip"><span
+                                    class="money">{{ $salePrice ?? $regularPrice }}</span></b> AWAY FROM
                             <b>FREE SHIPPING!</b>
                         </p>
                         <p class="shippingMsg">
@@ -595,32 +618,36 @@
                                                         <!-- countdown end -->
 
                                                         <!-- Start product button -->
-                                                        <form class="variants add" action="#"
-                                                            onclick="window.location.href='cart.html'" method="post">
-                                                            <button class="btn btn-addto-cart" type="button"
-                                                                tabindex="0">Add To
-                                                                Cart</button>
-                                                        </form>
-                                                        <div class="button-set">
-                                                            <div class="wishlist-btn">
-                                                                <a class="wishlist add-to-wishlist"
-                                                                    href="{{ route('single.post', ['post_type' => 'product', 'slug' => $items->slug]) }}">
-                                                                    <i class="icon anm anm-heart-l"></i>
-                                                                </a>
+                                                        @if ($items->stock > 0)
+                                                            <div class="variants add">
+                                                                <button class="btn btn-add-to-cart"
+                                                                    data-id="{{ $items->id }}" data-qty="1">
+                                                                    Add to Cart
+                                                                </button>
                                                             </div>
-                                                        </div>
-                                                        <!-- end product button -->
+                                                            <div class="button-set">
+                                                                <div class="wishlist-btn">
+                                                                    <a class="wishlist add-to-wishlist"
+                                                                        href="{{ route('single.post', ['post_type' => 'product', 'slug' => $items->slug]) }}">
+                                                                        <i class="icon anm anm-heart-l"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        @else
+                                                            <div class="variants add">
+                                                                <button class="btn btn-add-to-cart">
+                                                                    Coming Soon
+                                                                </button>
+                                                            </div>
+                                                        @endif
                                                     </div>
-                                                    <!-- end product image -->
-                                                    <!--start product details -->
+
                                                     <div class="product-details text-center">
-                                                        <!-- product name -->
                                                         <div class="product-name">
                                                             <a
                                                                 href="{{ route('single.post', ['post_type' => 'product', 'slug' => $items->slug]) }}">{{ $items->name }}</a>
                                                         </div>
-                                                        <!-- End product name -->
-                                                        <!-- product price -->
+
                                                         @if (!empty($items->sale_price) && $discountPercent > 0)
                                                             <div class="product-price">
                                                                 <span class="old-price">₹ {{ $regularPrice }}</span>
@@ -632,8 +659,6 @@
                                                             </div>
                                                         @endif
 
-                                                        <!-- End product price -->
-
                                                         <div class="product-review">
                                                             <i class="font-13 fa fa-star"></i>
                                                             <i class="font-13 fa fa-star"></i>
@@ -642,7 +667,6 @@
                                                             <i class="font-13 fa fa-star-o"></i>
                                                         </div>
                                                     </div>
-                                                    <!-- End product details -->
                                                 </div>
                                             @endforeach
                                         </div>
@@ -707,7 +731,6 @@
         let tabs = document.querySelectorAll(".product-tabs li");
         let contents = document.querySelectorAll(".tab-content");
 
-        // Show first tab by default
         if (tabs.length > 0) {
             tabs[0].classList.add("active");
         }
@@ -719,11 +742,9 @@
             tab.addEventListener("click", function() {
                 let tabId = this.getAttribute("rel");
 
-                // Remove active from all tabs and contents
                 tabs.forEach(t => t.classList.remove("active"));
                 contents.forEach(c => c.classList.remove("active"));
 
-                // Add active to clicked tab and corresponding content
                 this.classList.add("active");
                 document.getElementById(tabId).classList.add("active");
             });
@@ -777,8 +798,6 @@
     }
 
     const today = new Date();
-
-    // Estimated delivery: from 3 days to 7 days from today
     const fromDate = new Date(today);
     fromDate.setDate(fromDate.getDate() + 3);
 
@@ -797,11 +816,10 @@
     // Get current product price from data attribute
     const productPrice = parseFloat(freeShipMsg.dataset.price) || 0;
 
-    if(productPrice >= freeShippingThreshold){
+    if (productPrice >= freeShippingThreshold) {
         freeShipMsg.innerHTML = '<i class="fa fa-truck" aria-hidden="true"></i> You qualify for <b>FREE SHIPPING!</b>';
     } else {
         const amountLeft = freeShippingThreshold - productPrice;
         freeShipAmountSpan.innerText = `₹${amountLeft.toFixed(2)}`;
     }
 </script>
-

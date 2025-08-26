@@ -102,29 +102,36 @@
                                                 <!-- countdown end -->
 
                                                 <!-- Start product button -->
-
-                                                <div class="variants add">
-                                                    <button class="btn btn-add-to-cart" data-id="{{ $items->id }}"
-                                                        data-qty="1">
-                                                        Add to Cart
-                                                    </button>
-                                                </div>
-                                                <div class="button-set">
-                                                    <div class="wishlist-btn">
-                                                        <a class="wishlist add-to-wishlist"
-                                                            href="{{ route('single.post', ['post_type' => 'product', 'slug' => $items->slug]) }}">
-                                                            <i class="icon anm anm-heart-l"></i>
-                                                        </a>
+                                                @if ($items->stock > 0)
+                                                    <div class="variants add">
+                                                        <button class="btn btn-add-to-cart"
+                                                            data-id="{{ $items->id }}" data-qty="1">
+                                                            Add to Cart
+                                                        </button>
                                                     </div>
-                                                </div>
+                                                    <div class="button-set">
+                                                        <div class="wishlist-btn">
+                                                            <a class="wishlist add-to-wishlist"
+                                                                href="{{ route('single.post', ['post_type' => 'product', 'slug' => $items->slug]) }}">
+                                                                <i class="icon anm anm-heart-l"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="variants add">
+                                                        <button class="btn btn-add-to-cart">
+                                                            Coming Soon
+                                                        </button>
+                                                    </div>
+                                                @endif
                                             </div>
-                                            
+
                                             <div class="product-details text-center">
                                                 <div class="product-name">
                                                     <a
                                                         href="{{ route('single.post', ['post_type' => 'product', 'slug' => $items->slug]) }}">{{ $items->name }}</a>
                                                 </div>
-                                               
+
                                                 @if (!empty($items->sale_price) && $discountPercent > 0)
                                                     <div class="product-price">
                                                         <span class="old-price">₹ {{ $regularPrice }}</span>
@@ -155,7 +162,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="collection-box section">
         <div class="container-fluid">
             <div class="collection-grid">
@@ -212,8 +219,8 @@
             </div>
         </div>
     </div>
-    
-    <div class="section logo-section">
+
+    {{-- <div class="section logo-section">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -247,7 +254,7 @@
             </div>
         </div>
     </div>
-    
+     --}}
     <div class="product-rows section">
         <div class="container">
             <div class="row">
@@ -282,11 +289,11 @@
                                         data-src="{{ publicPath($items->image) }}"
                                         src="{{ publicPath($items->image) }}" alt="{{ $items->name }}"
                                         title="{{ $items->name }}">
-                                    
+
                                     <img class="grid-view-item__image hover blur-up lazyload"
                                         data-src="{{ publicPath($mainImage) }}" src="{{ publicPath($mainImage) }}"
                                         alt="{{ $items->name }}" title="{{ $items->name }}">
-                                    
+
                                     @if (!empty($items->sale_price) && $discountPercent > 0)
                                         <div class="product-labels rectangular">
                                             <span class="lbl on-sale">-{{ $discountPercent }}%</span>
@@ -294,7 +301,7 @@
                                         </div>
                                     @endif
                                 </a>
-                               
+
                                 <div class="product-details hoverDetails text-center mobile">
                                     <div class="product-name">
                                         <a
@@ -302,7 +309,7 @@
                                             {{ $items->name }}
                                         </a>
                                     </div>
-                                    
+
                                     <div class="product-price">
                                         @if (!empty($items->sale_price) && $discountPercent > 0)
                                             <span class="old-price">₹ {{ $regularPrice }}</span>
@@ -311,8 +318,8 @@
                                             <span class="price">₹ {{ $regularPrice }}</span>
                                         @endif
                                     </div>
-                                    
-                                    <div class="button-set">
+
+                                    {{-- <div class="button-set">
                                         <a href="javascript:void(0)" title="Quick View"
                                             class="quick-view-popup quick-view" data-toggle="modal"
                                             data-target="#content_quickview_{{ $items->slug }}">
@@ -337,7 +344,7 @@
                                                 <i class="icon anm anm-random-r"></i>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

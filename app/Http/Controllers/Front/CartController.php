@@ -23,6 +23,22 @@ class CartController extends Controller
         $this->commonService = $commonService;
     }
 
+    public function index()
+    {
+        $breadcrumbs = [
+            'title' => 'Cart',
+            'metaTitle' => 'Cart',
+            'metaDescription' => 'Cart',
+            'metaKeyword' => 'Cart',
+            'links' => [
+                ['url' => url('/'), 'title' => 'Home']
+            ]
+        ];
+        
+        $view = 'Templates.Cart';
+        return view('Front', compact('view', 'breadcrumbs'));
+    }
+
     public function addToCart(Request $request)
     {
         $product = Product::findOrFail($request->product_id);
@@ -105,20 +121,7 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function index()
-    {
-        $breadcrumbs = [
-            'title' => 'Cart',
-            'metaTitle' => 'Cart',
-            'metaDescription' => 'Cart',
-            'metaKeyword' => 'Cart',
-            'links' => [
-                ['url' => url('/'), 'title' => 'Home']
-            ]
-        ];
-        $view = 'Templates.Cart';
-        return view('Front', compact('view', 'breadcrumbs'));
-    }
+
 
     public function checkout()
     {

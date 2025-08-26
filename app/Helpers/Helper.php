@@ -670,6 +670,12 @@ function getMenus()
 			'role' => [User::ADMIN],
 		],
 		[
+			'title' => 'Visitors',
+			'route' => 'visitor',
+			'icon' => 'tf-icons bx bx-show',
+			'role' => [User::ADMIN],
+		],
+		[
 			'title' => 'Product',
 			'route' => null,
 			'icon' => 'tf-icons bx bxs-vector',

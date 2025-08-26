@@ -15,5 +15,4 @@ class Cart extends Model
         'quantity',
         'coupon_id',
     ];
-    
 }

@@ -13,10 +13,10 @@
                         <tr>
                             <th>Name</th>
                             <th>Orders</th>
+                            <th>Stock</th>
                             <th>Type</th>
                             <th>Category</th>
                             <th>Tag</th>
-                            <th>Added On</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -45,10 +45,10 @@
           // columns according to JSON
           { data: 'nameImage' },
           { data: 'orders' },
+          { data: 'stock' },
           { data: 'type' },
           { data: 'categories' },
           { data: 'tags' },
-          { data: 'created_at' },
           { data: 'action' }
         ],
         // order: [[2, 'desc']],

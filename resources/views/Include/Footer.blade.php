@@ -32,34 +32,57 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 d-flex justify-content-end align-items-center">
                     <div class="footer-social">
                         <ul class="list--inline site-footer__social-icons social-icons">
-                            @if (isset($details['facebook']))
+                            @if (!empty($details['facebook']))
                                 <li>
                                     <a class="social-icons__link" href="{{ $details['facebook'] }}" target="_blank"
-                                        title=""><i class="icon icon-facebook"></i><span
-                                            class="icon__fallback-text">Facebook</span></a>
+                                        title="Facebook">
+                                        <i class="bi bi-facebook"></i>
+                                        <span class="icon__fallback-text">Facebook</span>
+                                    </a>
                                 </li>
                             @endif
-                            @if (isset($details['whatsApp']))
-                                <li><a class="social-icons__link" href="{{ $details['whatsApp'] }}" target="_blank"
-                                        title=""><i class="icon icon-twitter"></i> <span
-                                            class="icon__fallback-text">Whats App Link</span></a></li>
+
+                            @if (!empty($details['whatsApp']))
+                                <li>
+                                    <a class="social-icons__link" href="{{ $details['whatsApp'] }}" target="_blank"
+                                        title="WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                        <span class="icon__fallback-text">WhatsApp</span>
+                                    </a>
+                                </li>
                             @endif
-                            @if (isset($details['instagram']))
-                                <li><a class="social-icons__link" href="{{ $details['instagram'] }}" target="_blank"
-                                        title=""><i class="icon icon-instagram"></i> <span
-                                            class="icon__fallback-text">Instagram</span></a></li>
+
+                            @if (!empty($details['instagram']))
+                                <li>
+                                    <a class="social-icons__link" href="{{ $details['instagram'] }}" target="_blank"
+                                        title="Instagram">
+                                        <i class="bi bi-instagram"></i>
+                                        <span class="icon__fallback-text">Instagram</span>
+                                    </a>
+                                </li>
                             @endif
-                            @if (isset($details['youtube']))
-                                <li><a class="social-icons__link" href="{{ $details['youtube'] }}" target="_blank"
-                                        title=""><i class="icon icon-youtube"></i> <span
-                                            class="icon__fallback-text">YouTube</span></a></li>
+
+                            @if (!empty($details['youTube']))
+                                <li>
+                                    <a class="social-icons__link" href="{{ $details['youTube'] }}" target="_blank"
+                                        title="YouTube">
+                                        <i class="bi bi-youtube"></i>
+                                        <span class="icon__fallback-text">YouTube</span>
+                                    </a>
+                                </li>
                             @endif
-                            @if (isset($details['snapChat']))
-                                <li><a class="social-icons__link" href="{{ $details['snapChat'] }}" target="_blank"
-                                        title=""><i class="icon icon-snapchat"></i> <span
-                                            class="icon__fallback-text">snapChat</span></a></li>
+
+                            @if (!empty($details['snapChat']))
+                                <li>
+                                    <a class="social-icons__link" href="{{ $details['snapChat'] }}" target="_blank"
+                                        title="Snapchat">
+                                        <i class="bi bi-snapchat"></i>
+                                        <span class="icon__fallback-text">Snapchat</span>
+                                    </a>
+                                </li>
                             @endif
                         </ul>
+
                     </div>
                 </div>
             </div>
@@ -107,17 +130,23 @@
                             <li><i class="icon anm anm-map-marker-al"></i>
                                 <p>{{ $details['address'] ?? '' }}</p>
                             </li>
-                            <li class="phone"><i class="icon anm anm-phone-s"></i>
-                                <p>{{ $details['number'] ?? '' }}</p>
+                            <li class="phone">
+                                <i class="icon anm anm-phone-s"></i>
+                                <p><a href="tel:{{ $details['number'] ?? '' }}" style="color: white">
+                                        {{ $details['number'] ?? '' }}
+                                    </a></p>
                             </li>
-                            <li class="email"><i class="icon anm anm-envelope-l"></i>
-                                <p>{{ $details['email'] ?? '' }}</p>
+                            <li class="email">
+                                <i class="icon anm anm-envelope-l"></i>
+                                <p><a href="mailto:{{ $details['email'] ?? '' }}" style="color: white">
+                                        {{ $details['email'] ?? '' }}
+                                    </a></p>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
+
             <hr>
             <div class="footer-bottom">
                 <div class="row">
@@ -131,12 +160,10 @@
                     <div
                         class="col-12 col-sm-12 col-md-6 col-lg-6 order-0 order-md-1 order-lg-1 order-sm-0 payment-icons text-right text-md-center">
                         <ul class="payment-icons list--inline">
-                            <li><i class="icon fa fa-cc-visa" aria-hidden="true"></i></li>
-                            <li><i class="icon fa fa-cc-mastercard" aria-hidden="true"></i></li>
-                            <li><i class="icon fa fa-cc-discover" aria-hidden="true"></i></li>
-                            <li><i class="icon fa fa-cc-paypal" aria-hidden="true"></i></li>
-                            <li><i class="icon fa fa-cc-amex" aria-hidden="true"></i></li>
-                            <li><i class="icon fa fa-credit-card" aria-hidden="true"></i></li>
+                            <li><i class="bi bi-credit-card-2-front"></i></li>
+                            <li><i class="bi bi-credit-card"></i></li>
+                            <li><i class="bi bi-paypal"></i></li>
+                            <li><i class="bi bi-bank"></i></li>
                         </ul>
                     </div>
                     <!--End Footer Payment Icon-->

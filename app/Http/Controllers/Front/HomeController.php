@@ -39,7 +39,8 @@ class HomeController extends Controller
     $homePage = getThemeOptions('homePage');
     $headerOption = getThemeOptions('header');
 
-    $product = Product::with('galleries')->get();
+    $product = Product::with('galleries')
+    ->get();
 
     $breadcrumbs = [
       'title' => '',
