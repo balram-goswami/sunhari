@@ -1,13 +1,14 @@
 @php
     $currentUser = getCurrentUser();
+    $setting = getThemeOptions('header');
 @endphp
 
 <style>
-    
     .dashboard-card {
         transition: all 0.3s ease-in-out;
         cursor: pointer;
     }
+
     .dashboard-card:hover {
         transform: translateY(-5px) scale(1.02);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
@@ -26,12 +27,16 @@
                         </h5>
                         <p class="text-muted mb-0">Here’s a quick overview of your system stats.</p>
                     </div>
-                    <div class="col-md-5 text-center p-3">
-                        <img src="{{ asset('assets/img/icons/1.png') }}" 
-                             class="img-fluid" 
-                             style="max-height: 120px;" 
-                             alt="User Badge">
-                    </div>
+                    @if (isset($setting['headerlogo']))
+                        <div class="col-md-5 text-center p-3">
+                            <img src="<?php echo asset($setting['headerlogo']); ?>" class="img-fluid" style="max-height: 120px;" alt="User Badge">
+                        </div>
+                    @else
+                        <div class="col-md-5 text-center p-3">
+                            <img src="{{ asset('assets/img/icons/1.png') }}" class="img-fluid"
+                                style="max-height: 120px;" alt="User Badge">
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -73,8 +78,8 @@
                     <div class="card-body">
                         <h6 class="fw-semibold">{{ $postCount['postTitle'] }}</h6>
                         <p class="text-success fw-bold mb-1">{{ $postCount['postCount'] }}</p>
-                        <a href="{{ route('post.index', ['postType' => $postCount['postType']]) }}" 
-                           class="btn btn-sm btn-outline-primary">View More</a>
+                        <a href="{{ route('post.index', ['postType' => $postCount['postType']]) }}"
+                            class="btn btn-sm btn-outline-primary">View More</a>
                     </div>
                 </div>
             </div>

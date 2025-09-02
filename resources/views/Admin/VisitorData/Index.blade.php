@@ -40,19 +40,19 @@
                                 <th>#</th>
                                 <th>IP</th>
                                 <th>Device</th>
+                                <th>Location</th>
                                 <th>Visit Time</th>
-                                <th>Latest Visit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($visitors as $visitor)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $visitor->ip_address }}</td>
-                                <td>{{ $visitor->device }}</td>
-                                <td>{{ $visitor->visit_time }}</td>
-                                <td>{{ $visitor->latest_visit_time}}</td>
-                            </tr>
+                            @foreach ($visitors as $visitor)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $visitor->ip_address }}</td>
+                                    <td>{{ $visitor->device }}</td>
+                                    <td>{{ getLocationFromIp($visitor->ip_address) }}</td>
+                                    <td>{{ $visitor->latest_visit_time }}</td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -62,6 +62,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -85,11 +86,23 @@
         options: {
             responsive: true,
             plugins: {
-                legend: { display: false }
+                legend: {
+                    display: false
+                }
             },
             scales: {
-                x: { title: { display: true, text: 'Date' }},
-                y: { title: { display: true, text: 'Visitors' }}
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Visitors'
+                    }
+                }
             }
         }
     });

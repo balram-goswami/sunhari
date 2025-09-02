@@ -409,6 +409,7 @@ function bindAddress($user)
 	$address = implode(' ', $address);
 	echo str_replace(" ", "+", $address);
 }
+
 function get_client_ip()
 {
 	$ipaddress = '';
@@ -494,6 +495,26 @@ function ip_info($purpose = "location", $deep_detect = TRUE)
 		}
 	}
 	return $output;
+}
+
+if (!function_exists('getLocationFromIp')) {
+    function getLocationFromIp($ip)
+    {
+        if ($ip == "127.0.0.1" || $ip == "::1") {
+            $ip = "8.8.8.8"; // fallback for localhost
+        }
+
+        $json = @file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip);
+        $details = @json_decode($json);
+
+        if ($details && isset($details->geoplugin_countryName)) {
+            return trim(($details->geoplugin_city ?? '') . ', ' .
+                        ($details->geoplugin_regionName ?? '') . ', ' .
+                        ($details->geoplugin_countryName ?? ''), ', ');
+        }
+
+        return "Unknown";
+    }
 }
 
 function getSettings()
@@ -1571,8 +1592,7 @@ function registerNavBarMenu()
 {
 	return [
 		'primary_menu' => 'Primary Menu',
-		'footer_service_menu' => 'Footer Service Menu',
-		'footer_main_menu' => 'Footer Main Menu'
+		'footer_menu' => 'Footer Menu'
 	];
 }
 function createUpdateSiteMapXML($postUrl)
@@ -1886,7 +1906,7 @@ function getCurrencyList()
 		'A$' => 'AUD',
 		'C$' => 'CAD',
 		'CHF' => 'CHF',
-		'¥'  => 'CNY/JPY', // Note: JPY also uses ¥
+		'¥'  => 'CNY/JPY',
 		'₽'  => 'RUB',
 		'R$' => 'BRL',
 		'R'  => 'ZAR',

@@ -1,5 +1,7 @@
 @php
     $details = getThemeOptions('footer');
+    $footerMenu = getChildMenus('footer_menu');
+    $currentUser = getCurrentUser();
 @endphp
 
 <footer id="footer">
@@ -94,36 +96,6 @@
             <!--Footer Links-->
             <div class="footer-top">
                 <div class="row">
-                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                        <h4 class="h4">Quick Shop</h4>
-                        <ul>
-                            <li><a href="#">Women</a></li>
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Kids</a></li>
-                            <li><a href="#">Sportswear</a></li>
-                            <li><a href="#">Sale</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                        <h4 class="h4">Informations</h4>
-                        <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">Terms &amp; condition</a></li>
-                            <li><a href="#">My Account</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                        <h4 class="h4">Customer Services</h4>
-                        <ul>
-                            <li><a href="#">Request Personal Data</a></li>
-                            <li><a href="#">FAQ's</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Orders and Returns</a></li>
-                            <li><a href="#">Support Center</a></li>
-                        </ul>
-                    </div>
                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
                         <h4 class="h4">Contact Us</h4>
                         <ul class="addressFooter">
@@ -144,6 +116,57 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+                        <h4 class="h4">Useful Links</h4>
+                        <ul>
+                            {{-- Dynamic footer menu items --}}
+                            @foreach ($footerMenu as $menuItem)
+                                <li>
+                                    <a href="{{ $menuItem['link_url'] ?? '#' }}">
+                                        {{ $menuItem['link_name'] ?? 'Untitled' }}
+                                    </a>
+                                </li>
+                            @endforeach
+
+                            {{-- Show My Account link based on user role --}}
+                            @auth
+                                @if ($currentUser->role === \App\Models\User::USER)
+                                    <li><a href="{{ route('customer.index') }}">My Account</a></li>
+                                @elseif ($currentUser->role === \App\Models\User::ADMIN)
+                                    <li><a href="{{ route('dashboard.index') }}">My Account</a></li>
+                                @endif
+                            @endauth
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+                        <h4 class="h4">Social Links</h4>
+                        <ul>
+                            @if (!empty($details['facebook']))
+                                <li><a href="{{ $details['facebook'] }}">Facebook</a></li>
+                            @endif
+                            @if (!empty($details['whatsApp']))
+                                <li><a href="{{ $details['whatsApp'] }}">WhatsApp</a></li>
+                            @endif
+                            @if (!empty($details['instagram']))
+                                <li><a href="{{ $details['instagram'] }}">Instagram</a></li>
+                            @endif
+                            @if (!empty($details['youTube']))
+                                <li><a href="{{ $details['youTube'] }}">Youtube</a></li>
+                            @endif
+                            @if (!empty($details['snapChat']))
+                                <li><a href="{{ $details['snapChat'] }}">SnapChat</a></li>
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+                        <div class="footer-instagram">
+                            <iframe src="https://www.instagram.com/p/POST_ID/embed" width="320" height="240"
+                                frameborder="0" scrolling="no" allowtransparency="true">
+                            </iframe>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

@@ -38,7 +38,7 @@
                         @if (isset($setting['headerlogo']) && $setting['headerlogo'])
                             <img src="<?php echo asset($setting['headerlogo']); ?>" style="max-width: 110px;" alt class="h-auto" />
                         @else
-                            <span>Sunhari </span>
+                            <span>Sunhari</span>
                         @endif
                     </a>
 

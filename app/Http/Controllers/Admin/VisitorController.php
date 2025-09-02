@@ -34,6 +34,6 @@ class VisitorController extends Controller
             'last1Hour',
             'visitorsChart',
             'visitors'
-        ));
+        )); 
     }
 }
