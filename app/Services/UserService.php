@@ -54,6 +54,7 @@ class UserService
         }
         $service->name = $request->input('name');
         $service->email = $request->input('email');
+        $service->status = $request->input('status') ?? 'active';
         $service->phone = $request->input('phone');
         if ($password) {
             $service->password = bcrypt($password);

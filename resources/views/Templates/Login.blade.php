@@ -35,7 +35,7 @@
                                 <input type="submit" class="btn mb-3" value="Sign In">
                                 <p class="mb-4">
                                     <a href="{{ route('forgot-password.index') }}" id="RecoverPassword">Forgot your password?</a> &nbsp; | &nbsp;
-                                    <a href="register.html" id="customer_register_link">Create account</a>
+                                    <a href="{{ route('register') }}" id="customer_register_link">Create account</a>
                                 </p>
                             </div>
                         </div>

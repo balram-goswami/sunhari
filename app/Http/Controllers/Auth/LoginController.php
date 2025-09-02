@@ -104,19 +104,18 @@ class LoginController extends Controller
         return Redirect::back();
     }
 
-    public function createAccount(Request $request, $id)
+    public function register()
+    {
+        $view = 'Templates.Register';
+        return view('Front', compact('view'));
+    }
+
+    public function createAccount(Request $request)
     {
         $this->userService->store($request);
         $user = $this->userService->getUserByEmail($request->input('email'));
         Auth::login($user);
 
-        // Update the cart to associate it with the new user
-        Cart::where('visitor_id', $id)->update([
-            'user_id' => $user->id,
-            'visitor_id' => null
-        ]);
-
-        // Flash success message and redirect back
         Session::flash('success', "New User saves successfully.");
         return redirect()->back()->with('success', 'Registration successful!');
     }

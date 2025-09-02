@@ -500,17 +500,17 @@ function ip_info($purpose = "location", $deep_detect = TRUE)
 if (!function_exists('getLocationFromIp')) {
     function getLocationFromIp($ip)
     {
-        if ($ip == "127.0.0.1" || $ip == "::1") {
-            $ip = "8.8.8.8"; // fallback for localhost
+        if ($ip === "127.0.0.1" || $ip === "::1") {
+            $ip = "8.8.8.8";
         }
 
-        $json = @file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip);
-        $details = @json_decode($json);
+        $response = @file_get_contents("http://ip-api.com/json/{$ip}?fields=status,country,regionName,city");
+        $data = @json_decode($response, true);
 
-        if ($details && isset($details->geoplugin_countryName)) {
-            return trim(($details->geoplugin_city ?? '') . ', ' .
-                        ($details->geoplugin_regionName ?? '') . ', ' .
-                        ($details->geoplugin_countryName ?? ''), ', ');
+        if ($data && $data['status'] === 'success') {
+            return trim(($data['city'] ?? '') . ', ' .
+                        ($data['regionName'] ?? '') . ', ' .
+                        ($data['country'] ?? ''), ', ');
         }
 
         return "Unknown";

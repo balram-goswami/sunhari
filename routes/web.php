@@ -22,6 +22,7 @@ Route::get('/', [HomeController::class, 'homePage'])->name('homePage');
 Route::get('login', [LoginController::class, 'index'])->name('login.index');
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
 Route::get('logout', [LoginController::class, 'logout'])->name('auth.logout');
+Route::get('register', [LoginController::class, 'register'])->name('register');
 Route::post('createAccount', [LoginController::class, 'createAccount'])->name('createAccount');
 
 Route::get('forgot-password', [LoginController::class, 'forgotPassword'])->name('forgot-password.index');

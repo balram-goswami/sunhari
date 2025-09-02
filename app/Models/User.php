@@ -18,21 +18,19 @@ class User extends Authenticatable implements JWTSubject
     const ADMIN = 'admin';
     const USER = 'user';
 
-    const ASTROLOGER = 'astrologer';
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'firstName',
-        'lastName',
+        'name',
         'email',
         'phone',
         'photo',
         'password',
         'role',
+        'status'
     ];
 
     /**
