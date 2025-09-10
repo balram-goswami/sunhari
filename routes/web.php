@@ -29,6 +29,7 @@ Route::get('forgot-password', [LoginController::class, 'forgotPassword'])->name(
 Route::post('forgot-password', [LoginController::class, 'forgotPasswordSend'])->name('forgot-password.store');
 
 Route::get('product/{slug}', [ShopController::class, 'shopSingle'])->name('shop.single');
+
 Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 Route::get('remove-from-cart/{itemId}', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
